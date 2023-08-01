@@ -1,7 +1,7 @@
 import "./App.css";
 import { Home } from "./components/pages/Home/Home";
 import { Dashboard } from "./components/pages/Dashboard/Dashboard";
-import { AuthLayouts } from "./components/authLayouts/AuthLayouts";
+import { AuthLayouts } from "./components/auth/authLayouts/AuthLayouts";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
