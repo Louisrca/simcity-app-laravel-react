@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
+    <div className="max-w-6xl mx-auto">
       <Routes>
         <Route
           path="/"
