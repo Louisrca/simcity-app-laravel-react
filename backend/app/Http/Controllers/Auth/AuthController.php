@@ -41,6 +41,37 @@ class AuthController extends Controller
 
     function login(Request $request){
 
+        $user= User::where('email', $request->email)->first();
+        // print_r($data);
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                return response([
+                    'message' => ['These credentials do not match our records.']
+                ], 404);
+            }
+        
+           
+
+            $rememberMe = $request->has('remember_me');
+
+            // Set the token expiration time based on the rememberMe checkbox
+            $expiration = $rememberMe ? now()->addMonth() : null;
+    
+
+            $token = $user->createToken('my-app-token', ['expires_at' => $expiration])->plainTextToken;
+            
+        
+            $response = [
+                'user' => $user,
+                'token' => $token
+            ];
+        
+             return response($response, 201);
+
+    }
+
+
+    function logout(Request $request){
+
         $validateUser = $request->validate(
             [
                 'email' => ["required", "string"],
@@ -58,7 +89,7 @@ class AuthController extends Controller
 
         $users = User::all();
         // On retourne les informations des villes en JSON
-        return response()->json($clients);
+        return response()->json($users);
     
 
     }

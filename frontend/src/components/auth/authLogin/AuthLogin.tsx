@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Avatar from "@mui/material/Avatar";
+import { getCSRFToken } from "../../../CSRFToken/getCSRFToken";
 import s from "./AuthLogin.module.css";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -45,21 +45,25 @@ export const AuthLogin = () => {
   const navigate = useNavigate();
   const [emailData, setEmailData] = useState<string | undefined>();
   const [passwordData, setPasswordData] = useState<string | undefined>();
+  const [rememberData, setRememberData] = useState<boolean | undefined>(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
+      const csrfToken: string = await getCSRFToken();
       const response = await fetch("http://127.0.0.1:8000/api/user/login", {
         method: "POST",
         mode: "cors",
         headers: new Headers({
           Accept: "application/json",
           "Content-type": "application/json; charset=UTF-8",
+          "X-CSRF-Token": csrfToken,
         }),
         body: JSON.stringify({
           email: emailData,
           password: passwordData,
+          remember_me: rememberData,
         }),
       });
 
@@ -70,7 +74,8 @@ export const AuthLogin = () => {
       }
 
       const data = await response.json();
-      localStorage.setItem("user", JSON.stringify(data));
+      console.log(data);
+      localStorage.setItem("user", "token : " + data.token);
       navigate("/dashboard");
     } catch (error: any) {
       console.error("Error:", error.message);
@@ -123,7 +128,13 @@ export const AuthLogin = () => {
                 onChange={(event) => setPasswordData(event.target.value)}
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={
+                  <Checkbox
+                    value="true"
+                    onChange={() => setRememberData(!rememberData)}
+                    color="primary"
+                  />
+                }
                 label="Remember me"
               />
               <Button
