@@ -1,7 +1,8 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCSRFToken } from "../../../CSRFToken/getCSRFToken";
+import { getCSRFToken } from "../../services/CSRFToken/getCSRFToken";
+import { postLogin } from "../../services/authLogin/postLogin";
 import s from "./AuthLogin.module.css";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,7 +12,6 @@ import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-// import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -38,48 +38,26 @@ function Copyright(props: any) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export const AuthLogin = () => {
   const navigate = useNavigate();
-  const [emailData, setEmailData] = useState<string | undefined>();
-  const [passwordData, setPasswordData] = useState<string | undefined>();
-  const [rememberData, setRememberData] = useState<boolean | undefined>(false);
+  const [emailData, setEmailData] = useState<string>("");
+  const [passwordData, setPasswordData] = useState<string>("");
+  const [rememberData, setRememberData] = useState<boolean>(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
-      const csrfToken: string = await getCSRFToken();
-      const response = await fetch("http://127.0.0.1:8000/api/user/login", {
-        method: "POST",
-        mode: "cors",
-        headers: new Headers({
-          Accept: "application/json",
-          "Content-type": "application/json; charset=UTF-8",
-          "X-CSRF-Token": csrfToken,
-        }),
-        body: JSON.stringify({
-          email: emailData,
-          password: passwordData,
-          remember_me: rememberData,
-        }),
-      });
-
-      if (!response.ok) {
-        // Gérer les erreurs en fonction du statut de la réponse (response.status)
-        const errorData = await response.json();
-        throw new Error(errorData.message);
-      }
-
-      const data = await response.json();
-      console.log(data);
-      localStorage.setItem("user", "token : " + data.token);
+      await postLogin(
+        await getCSRFToken(),
+        emailData,
+        passwordData,
+        rememberData
+      );
       navigate("/dashboard");
-    } catch (error: any) {
-      console.error("Error:", error.message);
-      // Gérer l'erreur ici, par exemple, afficher un message à l'utilisateur
+    } catch (error) {
+      console.log(error);
     }
   };
 
