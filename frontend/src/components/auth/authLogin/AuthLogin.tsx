@@ -62,7 +62,7 @@ export const AuthLogin = () => {
   };
 
   return (
-    <div className={s.homeBody}>
+    <div className={s.AuthCard}>
       <ThemeProvider theme={defaultTheme}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />

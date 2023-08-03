@@ -1,4 +1,48 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.logo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 2%;
+}
+
+.img {
+  width: 175px;
+  height: 40%;
+  margin: 0;
+}
+.tabs {
+  width: 100%;
+}
+
+.tabsList {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 2%;
+}
+
+.tabsList button,
+.selectIndicator {
+  margin: 0.25%;
+}
+
+button:hover {
+  border-color: #4a8aff;
+}
+
 .logoutButton {
   background-color: #fef2f2;
   color: #dc2626;
+}
+
+.logoutButton:hover {
+  border-color: #c62828;
+}
+
+.logoutIcon {
+  color: #c62828;
 }
