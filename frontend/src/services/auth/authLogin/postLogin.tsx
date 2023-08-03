@@ -1,4 +1,5 @@
 import { AuthentificationFailed } from "./types";
+import Cookies from "js-cookie";
 export const postLogin = async (
   csrfToken: string,
   email: string,
@@ -11,6 +12,7 @@ export const postLogin = async (
     headers: new Headers({
       Accept: "application/json",
       "Content-type": "application/json; charset=UTF-8",
+
       "X-CSRF-Token": csrfToken,
     }),
     body: JSON.stringify({
@@ -28,7 +30,8 @@ export const postLogin = async (
       );
     }
     return response.json().then((data) => {
-      localStorage.setItem("user", JSON.stringify(data.token));
+      Cookies.set("user", "token : " + data.token, { expires: 7 });
+      localStorage.setItem("userToken", JSON.stringify(data.token));
     });
   });
 };

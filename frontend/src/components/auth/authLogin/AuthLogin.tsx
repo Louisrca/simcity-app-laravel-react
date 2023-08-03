@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCSRFToken } from "../../services/CSRFToken/getCSRFToken";
-import { postLogin } from "../../services/authLogin/postLogin";
+import { getCSRFToken } from "../../../services/CSRFToken/getCSRFToken";
+import { postLogin } from "../../../services/auth/authLogin/postLogin";
 import s from "./AuthLogin.module.css";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";

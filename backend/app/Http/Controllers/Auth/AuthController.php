@@ -72,16 +72,10 @@ class AuthController extends Controller
 
     function logout(Request $request){
 
-        $validateUser = $request->validate(
-            [
-                'email' => ["required", "string"],
-                'password' => ["required", "string"]
-            ]);
-
-
-        if (!filter_var($validateUser['email'], FILTER_VALIDATE_EMAIL)) {
-           return true;
-        }
+        auth('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return response()->json(['status' => true, 'message' => 'logged out']);
     }
 
 
