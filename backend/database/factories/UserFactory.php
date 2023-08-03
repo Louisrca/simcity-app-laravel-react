@@ -20,10 +20,10 @@ class UserFactory extends Factory
         return [
             'firstname' => fake()->name(),
             'lastname' => fake()->name(),
-            'pseudo' => fake()->name(),
-            'tags'=>'ADMIN',
-            'role'=>'admin',
-            'status'=>'active',
+            'pseudo' => fake()->unique()->name(),
+            'tags' =>'ADMIN',
+            'role'  => 'admin',
+            'status' => 'actif',
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => Hash::make('salutcellnex'), // password
