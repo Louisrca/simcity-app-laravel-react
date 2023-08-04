@@ -18,8 +18,8 @@ class AuthController extends Controller
     function register(Request $request){
         // Validation des données saisies par l'utilisateur
         $data = $request->validate([
-            "firstName" => ["required", "string"],
-            "lastName" => ["required", "string"],
+            "firstname" => ["required", "string"],
+            "lastname" => ["required", "string"],
             "email" => ["required", "email", "unique:clients,email"],
             "password" => ["required", "string"],
 
