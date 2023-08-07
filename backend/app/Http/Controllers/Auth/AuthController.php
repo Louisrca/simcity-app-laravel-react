@@ -77,14 +77,13 @@ class AuthController extends Controller
     function login(Request $request){
 
         $user= User::where('email', $request->email)->first();
-        // print_r($data);
             if (!$user || !Hash::check($request->password, $user->password)) {
                 return response([
                     'message' => ['These credentials do not match our records.']
                 ], 404);
             }
             $rememberMe = $request->has('remember_me');
-            // Set the token expiration time based on the rememberMe checkbox
+          
             $expiration = $rememberMe ? now()->addMonth() : null;
             $token = $this->generateJWT($user);
             $response = [
@@ -92,7 +91,7 @@ class AuthController extends Controller
                 'token' => $token
             ];
             $expirationInSeconds = 3600;
-            $cookie = Cookie::make('jwt_token', $token, $expirationInSeconds, null, null,null, false, true,false,null); // Le dernier paramètre true indique que c'est un cookie HTTP-only
+            $cookie = Cookie::make('jwt_token', $token, $expirationInSeconds, null, null,null, false, true,false,null);
             return response($response, 201)->withCookie($cookie);
     }
 
@@ -104,40 +103,6 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return response()->json(['status' => true, 'message' => 'logged out']);
     }
-
-
-   
-    public function userProfile() {
-       
-
-
-    if (Auth::check()) {
-        // Récupérez l'utilisateur connecté
-        $user = Auth::user();
-
-        // Accédez aux données spécifiques de l'utilisateur
-    
-        // ... et d'autres données
-
-        // Retournez les données sous forme de réponse JSON
-        return response()->json([
-            'id' => $user->id,
-        'firstname' => $user->name,
-        'lastname' => $user->name,
-        'pseudo'=>$user->pseudo,
-        'email' => $user->email,
-        'role'=>$user->role,
-        'tag'=>$user->tag,
-        'status' =>$user->status
-            // ... et d'autres données
-        ]);
-    } else {
-        // L'utilisateur n'est pas authentifié, renvoyez une réponse appropriée
-        return response()->json(['message' => 'Utilisateur non authentifié'], 401);
-    }
-    
-    }
-
 
     function user(){
 
