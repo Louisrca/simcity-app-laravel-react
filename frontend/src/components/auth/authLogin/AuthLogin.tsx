@@ -74,9 +74,12 @@ export const AuthLogin = () => {
               alignItems: "center",
             }}
           >
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
+            <div className={s.title}>
+              <Typography component="h1" variant="h3">
+                Sign in
+              </Typography>
+            </div>
+
             <Box
               component="form"
               onSubmit={handleSubmit}
