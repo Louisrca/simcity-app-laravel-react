@@ -1,4 +1,9 @@
-import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridRowsProp,
+  GridColDef,
+  GridToolbar,
+} from "@mui/x-data-grid";
 import { WriteIcon } from "../../common/icons/WriteIcon";
 import { FormIcon } from "../../common/icons/FormIcon";
 
@@ -146,18 +151,25 @@ export const BtsTable = () => {
   ];
 
   return (
-    <div style={{ height: 580, width: "100%" }}>
+    <div style={{ height: 480, maxHeight: 500, width: "100%" }}>
       <DataGrid
         rows={rows}
         columns={columns}
-        initialState={{
-          filter: {
-            filterModel: {
-              items: [],
-              quickFilterExcludeHiddenColumns: true,
-            },
+        slots={{ toolbar: GridToolbar }}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+            quickFilterProps: { debounceMs: 500 },
+          },
+          filterPanel: {
+            disableAddFilterButton: true,
+            disableRemoveAllButton: true,
           },
         }}
+        initialState={{
+          pagination: { paginationModel: { pageSize: 5 } },
+        }}
+        pageSizeOptions={[5, 10, 25, 50]}
       />
     </div>
   );

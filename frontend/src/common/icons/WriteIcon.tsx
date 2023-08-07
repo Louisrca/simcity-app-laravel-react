@@ -2,7 +2,7 @@ import { IconProps } from "./iconTypes";
 
 export const WriteIcon = ({ color, ...props }: IconProps): JSX.Element => {
   return (
-    <svg viewBox="0 0 32 32" width="18px" fill={color} {...props}>
+    <svg viewBox="0 0 32 32" width="16px" fill={color} {...props}>
       <defs>
         <style>.cls-1</style>
       </defs>
