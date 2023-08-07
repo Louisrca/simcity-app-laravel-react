@@ -94,6 +94,7 @@ class AuthController extends Controller
             $expirationInSeconds = 3600;
             $cookie = Cookie::make('jwt_token', $token, $expirationInSeconds, null, null,null, false, true,false,null); // Le dernier paramètre true indique que c'est un cookie HTTP-only
             // return response($response, 201)->withCookie($cookie);
+            // apfpoezjfozjofzajpofjzapofzajofzjfpoezofjzpofef
     }
 
 
