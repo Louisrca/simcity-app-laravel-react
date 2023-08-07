@@ -16,6 +16,7 @@ export const postLogout = async (): Promise<any> => {
     })
     .then(() => {
       localStorage.removeItem("userToken");
+      localStorage.removeItem("userPersonalData");
       Cookies.remove("user");
     });
 };
