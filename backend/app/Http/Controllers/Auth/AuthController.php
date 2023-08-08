@@ -80,23 +80,26 @@ class AuthController extends Controller
                     'message' => ['These credentials do not match our records.']
                 ], 404);
             }
-            // $token = $this->generateJWT($user);
             $rememberMe = $request->has('remember_me');
-            // Set the token expiration time based on the rememberMe checkbox
+          
             $expiration = $rememberMe ? now()->addMonth() : null;
-            $token = $user->createToken('my-app-token', ['expires_at' => $expiration])->plainTextToken;
-            Auth::login($user);
+            // $token = $this->generateJWT($user);
+            $token = $user->createToken('auth_token')->plainTextToken;
             $response = [
-                'token' => $token,
                 'user' => $user,
-                'Type' => 'Bearer',
-                'role' => $user->role
+                'token' => $token
             ];
-
-            $request->session()->regenerate();
+            // $expirationInSeconds = 3600;
+            // Cookie::make('jwt_token', "test_cookie", $expirationInSeconds, null, null, false, true, false, null);
             return response($response, 201);
     }
 
+
+    function me(Request $request) {
+        $user = $request->user();
+
+        return response()->json(['user' => $user]);
+    }
 
     function logout(Request $request){
 

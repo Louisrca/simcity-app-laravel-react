@@ -1,8 +1,8 @@
-export const getBTS = async () => {
+export const getAuthLogInfo = async () => {
   const token = localStorage.getItem("userToken");
   const tokenWithoutQuotes = token.replace(/^"(.*)"$/, "$1");
   if (token !== null) {
-    return await fetch("http://127.0.0.1:8000/api/table/all-bts", {
+    return await fetch("http://127.0.0.1:8000/api/user/me", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -15,8 +15,8 @@ export const getBTS = async () => {
         }
         return response.json();
       })
-      .then((btsData) => {
-        return btsData;
+      .then((MeData) => {
+        return MeData;
       })
       .catch((error) => {
         throw error;

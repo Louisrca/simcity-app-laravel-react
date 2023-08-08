@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class BTSController extends Controller
 {
+    public function index(){
+        if(auth()->user()->role == 'admin'){
+            return $this->adminData();
+        }
+        else if(auth()->user()->role == 'ext'){
+            return $this->FMData();
+        }
+    }
     public function adminData(){
         $AllBts = Tbd_bts::all();
         return response()->json($AllBts);  
@@ -22,8 +30,4 @@ class BTSController extends Controller
         ->get();
         return response()->json($filterFM);  
     }
-
-    
-
-   
 }

@@ -30,6 +30,7 @@ Route::post("/user/login", [AuthController::class, "login"]);
 Route::get("/user",[AuthController::class,"user"]);
 Route::get("/csrf-token", [CsrfTokenController::class, "getCsrfToken"]);
 Route::post("/user/logout", [AuthController::class, "logout"]);
+Route::middleware(['auth:sanctum'])->get("/user/me", [AuthController::class, "me"]);
 
 //Tables BTS
-Route::get("/table/admin-bts", [BTSController::class, "adminData"]);
+Route::middleware(['auth:sanctum'])->get("/table/all-bts", [BTSController::class, "index"]);
