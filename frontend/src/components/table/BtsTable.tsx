@@ -11,12 +11,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { getBTS } from "../../services/tables/BTS/getBTS";
 import { Button } from "@mui/base";
-import { getAuthLogInfo } from "../../services/auth/autLogInfo/getAuthLogInfo";
 
 export const BtsTable = () => {
   const navigate = useNavigate();
   const [btsData, setBtsData] = useState<any>([]);
-  const [meData, setMeData] = useState<any>([]);
   useEffect(() => {
     getBTS()
       .then((Btsdata) => {
@@ -25,16 +23,8 @@ export const BtsTable = () => {
       .catch((error) => {
         console.error("Une erreur s'est produite :", error);
       });
-
-    getAuthLogInfo()
-      .then((MeData) => {
-        setMeData(MeData);
-      })
-      .catch((error) => {
-        console.error("Une erreur s'est produite :", error);
-      });
   }, []);
-  console.log(meData);
+ 
   const rows: GridRowsProp = btsData;
   const columns: GridColDef[] = [
     { field: "date_cession", headerName: "Date Cession", width: 150 },

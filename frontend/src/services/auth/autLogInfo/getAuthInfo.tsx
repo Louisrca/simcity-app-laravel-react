@@ -1,4 +1,4 @@
-export const getAuthLogInfo = async () => {
+export const getAuthInfo = async () => {
   const token = localStorage.getItem("userToken");
   const tokenWithoutQuotes = token.replace(/^"(.*)"$/, "$1");
   if (token !== null) {
