@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { getBTS } from "../../services/tables/BTS/getBTS";
 import { Button } from "@mui/base";
+import { LinearProgress } from "@mui/material";
 
 export const BtsTable = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export const BtsTable = () => {
         console.error("Une erreur s'est produite :", error);
       });
   }, []);
- 
+
   const rows: GridRowsProp = btsData;
   const columns: GridColDef[] = [
     { field: "date_cession", headerName: "Date Cession", width: 150 },
@@ -156,6 +157,8 @@ export const BtsTable = () => {
         rows={rows}
         columns={columns}
         slots={{ toolbar: GridToolbar }}
+        // loading
+        // {...rows}
         slotProps={{
           toolbar: {
             showQuickFilter: true,
@@ -169,7 +172,7 @@ export const BtsTable = () => {
         initialState={{
           pagination: { paginationModel: { pageSize: 5 } },
         }}
-        pageSizeOptions={[5, 10, 25, 50]}
+        pageSizeOptions={[5, 10, 25, 50, 100]}
       />
     </div>
   );

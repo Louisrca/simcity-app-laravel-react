@@ -7,8 +7,8 @@ import s from "./AuthLogin.module.css";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+// import FormControlLabel from "@mui/material/FormControlLabel";
+// import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -44,7 +44,8 @@ export const AuthLogin = () => {
   const navigate = useNavigate();
   const [emailData, setEmailData] = useState<string>("");
   const [passwordData, setPasswordData] = useState<string>("");
-  const [rememberData, setRememberData] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  // const [rememberData, setRememberData] = useState<boolean>(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -52,11 +53,12 @@ export const AuthLogin = () => {
       await postLogin(
         await getCSRFToken(),
         emailData,
-        passwordData,
-        rememberData
+        passwordData
+        // rememberData
       );
       navigate("/dashboard");
     } catch (error) {
+      setError(true);
       console.log(error);
     }
   };
@@ -75,9 +77,14 @@ export const AuthLogin = () => {
             }}
           >
             <div className={s.title}>
-              <Typography component="h1" variant="h3">
-                Sign in
-              </Typography>
+              {/* <Typography component="h1" variant="h3">
+                SIMCITY
+              </Typography> */}
+              <img
+                className={s.imgLogo}
+                src="src/common/images/LogoSimCity.jpg"
+                alt=""
+              />
             </div>
 
             <Box
@@ -86,6 +93,9 @@ export const AuthLogin = () => {
               noValidate
               sx={{ mt: 1 }}
             >
+              {error ? (
+                <div className={s.error}>Email ou mot de passe incorrect</div>
+              ) : null}
               <TextField
                 margin="normal"
                 required
@@ -97,6 +107,7 @@ export const AuthLogin = () => {
                 autoFocus
                 onChange={(event) => setEmailData(event.target.value)}
               />
+
               <TextField
                 margin="normal"
                 required
@@ -107,16 +118,6 @@ export const AuthLogin = () => {
                 id="password"
                 autoComplete="current-password"
                 onChange={(event) => setPasswordData(event.target.value)}
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    value="true"
-                    onChange={() => setRememberData(!rememberData)}
-                    color="primary"
-                  />
-                }
-                label="Remember me"
               />
               <Button
                 type="submit"
@@ -129,13 +130,12 @@ export const AuthLogin = () => {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                  <Link
+                    href="mailto: support.dev@cellnextelecom.fr"
+                    target="_blank"
+                    variant="body2"
+                  >
+                    Problème de mot de passe ?
                   </Link>
                 </Grid>
               </Grid>

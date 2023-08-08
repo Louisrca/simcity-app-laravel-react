@@ -80,9 +80,9 @@ class AuthController extends Controller
                     'message' => ['These credentials do not match our records.']
                 ], 404);
             }
-            $rememberMe = $request->has('remember_me');
+            // $rememberMe = $request->has('remember_me');
           
-            $expiration = $rememberMe ? now()->addMonth() : null;
+            // $expiration = $rememberMe ? now()->addMonth() : null;
             // $token = $this->generateJWT($user);
             $token = $user->createToken('auth_token')->plainTextToken;
             $response = [
@@ -102,7 +102,7 @@ class AuthController extends Controller
     }
 
     function logout(Request $request){
-
+        Cookie::forget('jwt_token');
         auth('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

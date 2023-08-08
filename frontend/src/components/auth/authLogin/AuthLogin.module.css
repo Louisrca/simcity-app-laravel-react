@@ -6,3 +6,15 @@
   width: 100%;
 }
 
+.imgLogo {
+  margin: 1.5%;
+  width: 28%;
+}
+
+.error {
+  border-radius: 4px;
+  padding: 1.5%;
+  font-size: 12px;
+  background-color: rgb(254 242 242);
+  color: rgb(220 38 38);
+}
