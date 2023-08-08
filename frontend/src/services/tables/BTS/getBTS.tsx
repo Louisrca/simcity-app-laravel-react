@@ -1,6 +1,6 @@
 export const getBTS = async () => {
   const token = localStorage.getItem("userToken");
-  return await fetch("http://127.0.0.1:8000/api/table/all-bts", {
+  return await fetch("http://127.0.0.1:8000/api/table/admin-bts", {
     method: "GET",
     headers: {
       Accept: "application/json",

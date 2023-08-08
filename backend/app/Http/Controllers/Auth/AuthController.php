@@ -22,36 +22,33 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login','register']]);
     }
 
-
     public function generateJWT($user) {
         $config = Configuration::forSymmetricSigner(
             new Sha256(),
             InMemory::plainText('N]9V9~h+8GB3]w)D2-sA5e@$kFr^4tLz')
         );
-    
         $now = new DateTimeImmutable();
 
-    
         $token = $config->builder()
-        ->issuedBy('http://localhost:5173')
-        ->permittedFor('http://localhost:5173')
-        ->identifiedBy('token_id', true)
-        ->issuedAt($now)
-        ->expiresAt($now->modify('+1 hour'))
-        ->withClaim('user_id', $user->id)
-        ->withClaim('email', $user->email)
-        ->withClaim('firstname', $user->firstname)
-        ->withClaim('lastname', $user->lastname)
-        ->withClaim('role', $user->role)
-        ->withClaim('tag', $user->tags)
-        ->withClaim('status', $user->status)
-        ->getToken($config->signer(), $config->signingKey());
+            ->issuedBy('http://localhost:5173')
+            ->permittedFor('http://localhost:5173')
+            ->identifiedBy('token_id', true)
+            ->issuedAt($now)
+            ->expiresAt($now->modify('+1 hour'))
+            ->withClaim('user_id', $user->id)
+            ->withClaim('email', $user->email)
+            ->withClaim('firstname', $user->firstname)
+            ->withClaim('lastname', $user->lastname)
+            ->withClaim('role', $user->role)
+            ->withClaim('tag', $user->tags)
+            ->withClaim('status', $user->status)
+            ->getToken($config->signer(), $config->signingKey());
     
-       return $token->toString();
+        return $token->toString();
+     
     }
     
     function register(Request $request){
-        // Validation des données saisies par l'utilisateur
         $data = $request->validate([
             "firstname" => ["required", "string"],
             "lastname" => ["required", "string"],
@@ -76,23 +73,28 @@ class AuthController extends Controller
 
     function login(Request $request){
 
+        //Vérification de l'email utilisateur + verification du password 
         $user= User::where('email', $request->email)->first();
             if (!$user || !Hash::check($request->password, $user->password)) {
                 return response([
                     'message' => ['These credentials do not match our records.']
                 ], 404);
             }
+            // $token = $this->generateJWT($user);
             $rememberMe = $request->has('remember_me');
-          
+            // Set the token expiration time based on the rememberMe checkbox
             $expiration = $rememberMe ? now()->addMonth() : null;
-            $token = $this->generateJWT($user);
+            $token = $user->createToken('my-app-token', ['expires_at' => $expiration])->plainTextToken;
+            Auth::login($user);
             $response = [
+                'token' => $token,
                 'user' => $user,
-                'token' => $token
+                'Type' => 'Bearer',
+                'role' => $user->role
             ];
-            $expirationInSeconds = 3600;
-            $cookie = Cookie::make('jwt_token', $token, $expirationInSeconds, null, null,null, false, true,false,null);
-            return response($response, 201)->withCookie($cookie);
+
+            $request->session()->regenerate();
+            return response($response, 201);
     }
 
 
