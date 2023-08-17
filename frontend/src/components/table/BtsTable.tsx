@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { getBTS } from "../../services/tables/BTS/getBTS";
 import { Button } from "@mui/base";
-import { LinearProgress } from "@mui/material";
+// import { LinearProgress } from "@mui/material";
 
 export const BtsTable = () => {
   const navigate = useNavigate();
@@ -101,8 +101,8 @@ export const BtsTable = () => {
     { field: "avis_sm", headerName: "Avis SM & GB", width: 150 },
     { field: "avis_hse", headerName: "Avis HSE", width: 150 },
     { field: "synthese", headerName: "Synthèse", width: 150 },
-    { field: "levee_de_reserve", headerName: "Synthèse", width: 150 },
-    { field: "commentaires", headerName: "Commentaires", width: 150 },
+    { field: "levee_de_reserve", headerName: "Levée de Réserves", width: 150 },
+    { field: "commentaires_fm", headerName: "Commentaires FM", width: 150 },
     {
       field: "date_acceptation",
       headerName: "Date Acceptation",
@@ -159,6 +159,7 @@ export const BtsTable = () => {
         slots={{ toolbar: GridToolbar }}
         // loading
         // {...rows}
+
         slotProps={{
           toolbar: {
             showQuickFilter: true,

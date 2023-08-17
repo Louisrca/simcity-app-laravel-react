@@ -19,11 +19,11 @@ export const Dashboard = () => {
   }, []);
   const { user } = meData;
   return (
-    <div>
+    <div className={s.dashboardView}>
       <h1>Dashboard</h1>
       {user && <h4>{user.firstname + " " + user.lastname}</h4>}
       {error && <p className={s.error}>{error}</p>}
-      <div className={s.dashboardTable}>
+      <div>
         <BtsTable />
       </div>
     </div>
