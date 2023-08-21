@@ -38,7 +38,6 @@ export const BtsTable = () => {
       field: "date_cession",
       headerName: "Date Cession",
       width: 150,
-      pinnable: true,
     },
     { field: "code_site", headerName: "Code Site", width: 150 },
     { field: "type_infra", headerName: "Type Infra", width: 150 },
