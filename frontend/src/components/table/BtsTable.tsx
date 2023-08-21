@@ -12,11 +12,6 @@ import { useNavigate } from "react-router";
 import { getBTS } from "../../services/tables/BTS/getBTS";
 import { Button } from "@mui/base";
 import { UserActions } from "./utils/UserActions";
-// import { LinearProgress } from "@mui/material";
-interface GridPinnedColumns {
-  left?: string[]; // Optional field names to pin to the left
-  right?: string[]; // Optional field names to pin to the right
-}
 export const BtsTable = () => {
   const navigate = useNavigate();
   const [btsData, setBtsData] = useState<any>([]);

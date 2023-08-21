@@ -12,7 +12,7 @@ import SelectIndicator from "./SelectIndicator";
 export const Navbar = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    postLogout();
+    postLogout(userToken());
     navigate("/");
   };
 
