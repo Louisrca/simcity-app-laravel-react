@@ -110,11 +110,8 @@ class AuthController extends Controller
     }
 
     function user(){
-
         $users = User::all();
         // On retourne les informations des villes en JSON
         return response()->json($users);
-    
-
     }
 }
