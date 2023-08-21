@@ -52,6 +52,7 @@ export const UserActions = ({ params, rowId, setRowId }: ActionProps) => {
             bgcolor: green[500],
             "&:hover": { bgcolor: green[700] },
           }}
+          onClick={handleSubmit}
         >
           <Check />
         </Fab>
@@ -70,7 +71,7 @@ export const UserActions = ({ params, rowId, setRowId }: ActionProps) => {
           size={52}
           sx={{
             color: green[500],
-            position: "relative",
+            position: "absolute",
             top: -6,
             left: -6,
             zIndex: 1,

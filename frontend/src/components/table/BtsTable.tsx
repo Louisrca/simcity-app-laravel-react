@@ -47,7 +47,7 @@ export const BtsTable = () => {
     { field: "site_bibi", headerName: "Site BIBI", width: 150 },
     { field: "region", headerName: "Region", width: 150 },
     { field: "class_site", headerName: "Classe Site", width: 150 },
-    { field: "adresse", headerName: "Adresse", width: 150 },
+    { field: "adresse", headerName: "Adresse", width: 550 },
     { field: "cp", headerName: "C.P", width: 150 },
     { field: "ville", headerName: "Ville", width: 150 },
     {
@@ -165,6 +165,15 @@ export const BtsTable = () => {
     <div style={{ height: 480, maxHeight: 500, width: "100%" }}>
       <Box>
         <DataGrid
+          localeText={{
+            toolbarDensity: "Taille",
+            toolbarDensityCompact: "Petit",
+            toolbarDensityStandard: "Moyen",
+            toolbarDensityComfortable: "Grand",
+            toolbarFilters: "Filtres",
+            toolbarFiltersLabel: "Filtres",
+            toolbarColumns: "Colonnes",
+          }}
           rows={rows}
           checkboxSelection
           disableRowSelectionOnClick

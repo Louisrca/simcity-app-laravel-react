@@ -2,14 +2,13 @@ import { getAuthInfo } from "../../../services/auth/autLogInfo/getAuthInfo";
 import { BtsTable } from "../../table/BtsTable";
 import s from "./Dashboard.module.css";
 import { useEffect, useState } from "react";
-import { userToken } from "../../../utils/UserToken";
 
 export const Dashboard = () => {
   const [meData, setMeData] = useState<any>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getAuthInfo(userToken())
+    getAuthInfo()
       .then((MeData) => {
         setMeData(MeData);
         setError(null); // Réinitialiser l'erreur en cas de succès
