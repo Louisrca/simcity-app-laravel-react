@@ -1,10 +1,9 @@
 import { AuthentificationFailed } from "./types";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 export const postLogin = async (
   csrfToken: string,
   email: string,
-  password: string,
-  rememberMe: boolean
+  password: string
 ): Promise<any> => {
   await fetch("http://127.0.0.1:8000/api/user/login", {
     method: "POST",
@@ -18,7 +17,6 @@ export const postLogin = async (
     body: JSON.stringify({
       email: email,
       password: password,
-      remember_me: rememberMe,
     }),
   }).then((response: Response): AuthentificationFailed | Promise<unknown> => {
     if (response.status === 401) {
@@ -47,6 +45,7 @@ export const postLogin = async (
         "userPersonalData",
         JSON.stringify(userPersonalData)
       );
+      console.log(JSON.stringify(userPersonalData));
     });
   });
 };

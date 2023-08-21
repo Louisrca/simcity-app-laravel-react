@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import {
   DataGrid,
   GridRowsProp,
@@ -6,15 +7,21 @@ import {
 } from "@mui/x-data-grid";
 import { WriteIcon } from "../../common/icons/WriteIcon";
 import { FormIcon } from "../../common/icons/FormIcon";
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { getBTS } from "../../services/tables/BTS/getBTS";
 import { Button } from "@mui/base";
-
+import { UserActions } from "./utils/UserActions";
+// import { LinearProgress } from "@mui/material";
+interface GridPinnedColumns {
+  left?: string[]; // Optional field names to pin to the left
+  right?: string[]; // Optional field names to pin to the right
+}
 export const BtsTable = () => {
   const navigate = useNavigate();
   const [btsData, setBtsData] = useState<any>([]);
+  const [rowId, setRowId] = useState<any>();
+
   useEffect(() => {
     getBTS()
       .then((Btsdata) => {
@@ -27,7 +34,12 @@ export const BtsTable = () => {
 
   const rows: GridRowsProp = btsData;
   const columns: GridColDef[] = [
-    { field: "date_cession", headerName: "Date Cession", width: 150 },
+    {
+      field: "date_cession",
+      headerName: "Date Cession",
+      width: 150,
+      pinnable: true,
+    },
     { field: "code_site", headerName: "Code Site", width: 150 },
     { field: "type_infra", headerName: "Type Infra", width: 150 },
     { field: "prioritaire", headerName: "Prioritaires", width: 150 },
@@ -100,8 +112,8 @@ export const BtsTable = () => {
     { field: "avis_sm", headerName: "Avis SM & GB", width: 150 },
     { field: "avis_hse", headerName: "Avis HSE", width: 150 },
     { field: "synthese", headerName: "Synthèse", width: 150 },
-    { field: "levee_de_reserve", headerName: "Synthèse", width: 150 },
-    { field: "commentaires", headerName: "Commentaires", width: 150 },
+    { field: "levee_de_reserve", headerName: "Levée de Réserves", width: 150 },
+    { field: "commentaires_fm", headerName: "Commentaires FM", width: 150 },
     {
       field: "date_acceptation",
       headerName: "Date Acceptation",
@@ -148,29 +160,41 @@ export const BtsTable = () => {
         </Button>
       ),
     },
+    {
+      field: "enregistrer",
+      headerName: "Enregistrer",
+      renderCell: (params) => <UserActions {...{ params, rowId, setRowId }} />,
+    },
   ];
 
   return (
     <div style={{ height: 480, maxHeight: 500, width: "100%" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        slots={{ toolbar: GridToolbar }}
-        slotProps={{
-          toolbar: {
-            showQuickFilter: true,
-            quickFilterProps: { debounceMs: 500 },
-          },
-          filterPanel: {
-            disableAddFilterButton: true,
-            disableRemoveAllButton: true,
-          },
-        }}
-        initialState={{
-          pagination: { paginationModel: { pageSize: 5 } },
-        }}
-        pageSizeOptions={[5, 10, 25, 50]}
-      />
+      <Box>
+        <DataGrid
+          rows={rows}
+          checkboxSelection
+          disableRowSelectionOnClick
+          {...rows}
+          columns={columns}
+          slots={{ toolbar: GridToolbar }}
+          slotProps={{
+            toolbar: {
+              showQuickFilter: true,
+              quickFilterProps: { debounceMs: 500 },
+            },
+            filterPanel: {
+              disableAddFilterButton: true,
+              disableRemoveAllButton: true,
+            },
+          }}
+          initialState={{
+            pagination: { paginationModel: { pageSize: 5 } },
+          }}
+          pageSizeOptions={[5, 10, 25, 50, 100]}
+          // editMode="row"
+          onCellEditStop={(params: { id: any }) => setRowId(params.id)}
+        />
+      </Box>
     </div>
   );
 };
