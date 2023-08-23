@@ -2,11 +2,12 @@ import { BtsTable } from "../../table/bts/BtsTable";
 import { BtsTableFM } from "../../table/bts/BtsTableFM";
 import { BtsTableAGH } from "../../table/bts/BtsTableAGH";
 import s from "./Dashboard.module.css";
-import { useAuth } from "../../../components/auth/authLogin/AuthContext";
+import { useAuth } from "../../context/auth/AuthContext";
 
 export const Dashboard = () => {
   const { meData, error } = useAuth();
   const user = meData?.user;
+
   return (
     <div className={s.dashboardView}>
       <h1>Dashboard</h1>

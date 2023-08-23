@@ -1,0 +1,11 @@
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.preloaderGif {
+  margin-top: 8%;
+  width: 100px;
+}

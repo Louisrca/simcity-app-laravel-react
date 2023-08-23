@@ -1,4 +1,4 @@
-import { useAuth } from "../../auth/authLogin/AuthContext";
+import { useAuth } from "../../context/auth/AuthContext";
 import s from "./Profile.module.css";
 
 export const Profile = () => {

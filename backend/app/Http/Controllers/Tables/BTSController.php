@@ -24,7 +24,7 @@ class BTSController extends Controller
         return response()->json($AllBts);  
     }
     public function FMData(){
-        $filterFM = Tbd_bts::select('date_cession', 'code_site','controle_clnx', 'prioritaire','etat', 'arbitrage','avis_op','avis_sm','avis_hse', 'synthese', 'date_dernier_commentaire', 'date_dernier_commentaire_fm')
+        $filterFM = Tbd_bts::select('id','date_cession', 'code_site','controle_clnx', 'prioritaire','etat', 'arbitrage','avis_op','avis_sm','avis_hse', 'synthese', 'date_dernier_commentaire', 'date_dernier_commentaire_fm')
         ->where('arbitrage', 'Annexe 2 avec réserves')
         ->orWhere('arbitrage', 'L.D.R en cours')
         ->orWhere('arbitrage', 'OK pour cession')
@@ -34,7 +34,7 @@ class BTSController extends Controller
     }
 
     public function AGHData(){
-        $filterFM = Tbd_bts::select('date_cession', 'code_site','controle_clnx', 'cp','ville','type_infra','adresse','classe_site','loyer_declare_fm','etat', 'arbitrage','avis_op','avis_sm','avis_hse', 'synthese', 'date_dernier_commentaire', 'date_dernier_commentaire_fm')
+        $filterFM = Tbd_bts::select('id','date_cession', 'code_site','controle_clnx', 'cp','ville','type_infra','adresse','classe_site','loyer_declare_fm','etat', 'arbitrage','avis_op','avis_sm','avis_hse', 'synthese', 'date_dernier_commentaire', 'date_dernier_commentaire_fm')
         ->get();
         return response()->json($filterFM);  
     }

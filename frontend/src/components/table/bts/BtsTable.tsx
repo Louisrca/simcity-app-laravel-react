@@ -14,15 +14,19 @@ import { useNavigate } from "react-router";
 import { getBTS } from "../../../services/tables/BTS/getBTS";
 import { Button } from "@mui/base";
 import { UserActions } from "./utils/UserActions";
+import s from "./BtsTable.module.css";
 export const BtsTable = () => {
   const navigate = useNavigate();
   const [btsData, setBtsData] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const [rowId, setRowId] = useState<any>();
 
   useEffect(() => {
+    setLoading(true);
     getBTS()
       .then((Btsdata) => {
         setBtsData(Btsdata);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Une erreur s'est produite :", error);
@@ -33,7 +37,7 @@ export const BtsTable = () => {
   const columns: GridColDef[] = [
     {
       field: "date_cession",
-      headerName: "Date Cession",
+      headerName: "Vague",
       width: 150,
     },
     { field: "code_site", headerName: "Code Site", width: 150 },
@@ -229,41 +233,54 @@ export const BtsTable = () => {
   ];
 
   return (
-    <div style={{ height: 480, maxHeight: 500, width: "100%" }}>
-      <Box>
-        <DataGrid
-          localeText={{
-            toolbarDensity: "Taille",
-            toolbarDensityCompact: "Petit",
-            toolbarDensityStandard: "Moyen",
-            toolbarDensityComfortable: "Grand",
-            toolbarFilters: "Filtres",
-            toolbarFiltersLabel: "Filtres",
-            toolbarColumns: "Colonnes",
-          }}
-          rows={rows}
-          checkboxSelection
-          disableRowSelectionOnClick
-          {...rows}
-          columns={columns}
-          slots={{ toolbar: GridToolbar }}
-          slotProps={{
-            toolbar: {
-              showQuickFilter: true,
-              quickFilterProps: { debounceMs: 500 },
-            },
-            filterPanel: {
-              disableAddFilterButton: true,
-              disableRemoveAllButton: true,
-            },
-          }}
-          initialState={{
-            pagination: { paginationModel: { pageSize: 5 } },
-          }}
-          pageSizeOptions={[5, 10, 25, 50, 100]}
-          onCellEditStop={(params: { id: any }) => setRowId(params.id)}
-        />
-      </Box>
-    </div>
+    <>
+      {loading ? (
+        <div className={s.preloader}>
+          <img
+            src="./src/common/images/loading_gif.gif"
+            alt="loader"
+            className={s.preloaderGif}
+          ></img>
+          <p className={s.preloaderMessage}>Chargement en cours...</p>
+        </div>
+      ) : (
+        <div style={{ height: 480, maxHeight: 500, width: "100%" }}>
+          <Box>
+            <DataGrid
+              localeText={{
+                toolbarDensity: "Taille",
+                toolbarDensityCompact: "Petit",
+                toolbarDensityStandard: "Moyen",
+                toolbarDensityComfortable: "Grand",
+                toolbarFilters: "Filtres",
+                toolbarFiltersLabel: "Filtres",
+                toolbarColumns: "Colonnes",
+              }}
+              rows={rows}
+              checkboxSelection
+              disableRowSelectionOnClick
+              {...rows}
+              columns={columns}
+              slots={{ toolbar: GridToolbar }}
+              slotProps={{
+                toolbar: {
+                  showQuickFilter: true,
+                  quickFilterProps: { debounceMs: 500 },
+                },
+                filterPanel: {
+                  disableAddFilterButton: true,
+                  disableRemoveAllButton: true,
+                },
+              }}
+              initialState={{
+                pagination: { paginationModel: { pageSize: 5 } },
+              }}
+              pageSizeOptions={[5, 10, 25, 50, 100]}
+              onCellEditStop={(params: { id: any }) => setRowId(params.id)}
+            />
+          </Box>
+        </div>
+      )}
+    </>
   );
 };

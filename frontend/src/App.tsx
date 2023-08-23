@@ -4,7 +4,7 @@ import { Dashboard } from "./components/pages/Dashboard/Dashboard";
 import { AuthLayouts } from "./components/layout/authLayout/AuthLayout";
 import { PageLayout } from "./components/layout/pageLayout/PageLayout";
 import { Profile } from "./components/pages/Profile/Profile";
-import { AuthProvider } from "./components/auth/authLogin/AuthContext";
+import { AuthProvider } from "./components/context/auth/AuthContext";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
