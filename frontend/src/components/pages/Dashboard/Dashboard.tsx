@@ -1,31 +1,28 @@
-import { getAuthInfo } from "../../../services/auth/autLogInfo/getAuthInfo";
-import { BtsTable } from "../../table/BtsTable";
+import { BtsTable } from "../../table/bts/BtsTable";
+import { BtsTableFM } from "../../table/bts/BtsTableFM";
+import { BtsTableAGH } from "../../table/bts/BtsTableAGH";
 import s from "./Dashboard.module.css";
-import { useEffect, useState } from "react";
+import { useAuth } from "../../../components/auth/authLogin/AuthContext";
 
 export const Dashboard = () => {
-  const [meData, setMeData] = useState<any>([]);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    getAuthInfo()
-      .then((MeData) => {
-        setMeData(MeData);
-        setError(null); // Réinitialiser l'erreur en cas de succès
-      })
-      .catch((error) => {
-        setError("Une erreur s'est produite : " + error.message);
-      });
-  }, []);
-  const { user } = meData;
+  const { meData, error } = useAuth();
+  const user = meData?.user;
   return (
     <div className={s.dashboardView}>
       <h1>Dashboard</h1>
-      {user && <h4>{user.firstname + " " + user.lastname}</h4>}
+      {user && (
+        <h4>Connecté en tant que {user.firstname + " " + user.lastname}</h4>
+      )}
       {error && <p className={s.error}>{error}</p>}
-      <div>
+      {user?.role === "ext" ? (
+        <BtsTableFM />
+      ) : user?.role === "admin" ? (
         <BtsTable />
-      </div>
+      ) : user?.role === "pilote_AGH" ? (
+        <BtsTableAGH />
+      ) : (
+        undefined === user?.role
+      )}
     </div>
   );
 };

@@ -4,12 +4,14 @@ import {
   GridRowsProp,
   GridColDef,
   GridToolbar,
+  GridColumnHeaderParams,
 } from "@mui/x-data-grid";
-import { WriteIcon } from "../../common/icons/WriteIcon";
-import { FormIcon } from "../../common/icons/FormIcon";
+import { HeaderColumnEdit } from "../../../common/icons/HeaderColumnEdit";
+import { WriteIcon } from "../../../common/icons/WriteIcon";
+import { FormIcon } from "../../../common/icons/FormIcon";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { getBTS } from "../../services/tables/BTS/getBTS";
+import { getBTS } from "../../../services/tables/BTS/getBTS";
 import { Button } from "@mui/base";
 import { UserActions } from "./utils/UserActions";
 export const BtsTable = () => {
@@ -40,7 +42,12 @@ export const BtsTable = () => {
     { field: "gb", headerName: "G.B", width: 150 },
     {
       field: "controle_clnx",
-      headerName: "Contrôle CLNX",
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"Contrôle CLNX "}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
       width: 150,
       editable: true,
     },
@@ -52,44 +59,89 @@ export const BtsTable = () => {
     { field: "ville", headerName: "Ville", width: 150 },
     {
       field: "loyer_declare_fm",
-      headerName: "Loyer Déclaré FM (en €)",
-      width: 150,
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"Loyer Déclaré FM (en €)"}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
+      width: 250,
       editable: true,
     },
     {
       field: "charge_prod_ope",
-      headerName: "C.D.P OPE",
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"C.D.P OPE"}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
       width: 150,
       editable: true,
     },
     {
       field: "charge_prod_sm",
-      headerName: "C.D.P SM",
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"C.D.P SM"}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
       width: 150,
       editable: true,
     },
     {
       field: "charge_prod_hse",
-      headerName: "C.D.P HSE",
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"C.D.P HSE"}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
       width: 150,
       editable: true,
     },
     {
       field: "part_operation",
-      headerName: "Part Opération",
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"Part Opération"}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
       width: 150,
       editable: true,
     },
     {
       field: "part_patrimoine",
-      headerName: "Part Patrimoine",
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"Part Patrimoine"}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
       width: 150,
       editable: true,
     },
-    { field: "part_hse", headerName: "Part HSE", width: 150, editable: true },
+    {
+      field: "part_hse",
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"Part HSE"}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
+      width: 150,
+      editable: true,
+    },
     {
       field: "pilote_externe",
-      headerName: "Pilote Externe OPE",
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"Pilote Externe OPE"}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
       width: 150,
       editable: true,
     },
@@ -101,7 +153,17 @@ export const BtsTable = () => {
     { field: "pilote_externe3", headerName: "Pilote Externe HSE", width: 150 },
 
     { field: "etat", headerName: "Etat Analyse", width: 150 },
-    { field: "arbitrage", headerName: "Statut", width: 150, editable: true },
+    {
+      field: "arbitrage",
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"Statut"}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
+      width: 150,
+      editable: true,
+    },
     { field: "avis_op", headerName: "Avis OPE", width: 150 },
     { field: "avis_sm", headerName: "Avis SM & GB", width: 150 },
     { field: "avis_hse", headerName: "Avis HSE", width: 150 },
@@ -110,8 +172,13 @@ export const BtsTable = () => {
     { field: "commentaires_fm", headerName: "Commentaires FM", width: 150 },
     {
       field: "date_acceptation",
-      headerName: "Date Acceptation",
       width: 150,
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong>
+          {"Date Accecptation"}
+          <HeaderColumnEdit color="black" />
+        </strong>
+      ),
       editable: true,
     },
     {
@@ -194,7 +261,6 @@ export const BtsTable = () => {
             pagination: { paginationModel: { pageSize: 5 } },
           }}
           pageSizeOptions={[5, 10, 25, 50, 100]}
-          // editMode="row"
           onCellEditStop={(params: { id: any }) => setRowId(params.id)}
         />
       </Box>

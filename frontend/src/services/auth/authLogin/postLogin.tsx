@@ -41,11 +41,11 @@ export const postLogin = async (
       ];
       // Cookies.set("user", "token : " + data.token, { expires: 7 });
       localStorage.setItem("userToken", JSON.stringify(data.token));
-      localStorage.setItem(
-        "userPersonalData",
-        JSON.stringify(userPersonalData)
-      );
-      console.log(JSON.stringify(userPersonalData));
+      // localStorage.setItem(
+      //   "userPersonalData",
+      //   JSON.stringify(userPersonalData)
+      // );
+      // console.log(JSON.stringify(userPersonalData));
     });
   });
 };

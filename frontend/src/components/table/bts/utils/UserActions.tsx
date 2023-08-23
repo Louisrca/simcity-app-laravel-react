@@ -1,6 +1,6 @@
 import s from "../BtsTable.module.css";
-import { useState, useEffect } from "react";
-import { postBTS } from "../../../services/tables/BTS/postBTS";
+import { useState } from "react";
+import { postBTS } from "../../../../services/tables/BTS/postBTS";
 import { Box, Fab, CircularProgress } from "@mui/material";
 import { Check, Save } from "@mui/icons-material";
 import { green } from "@mui/material/colors";
@@ -26,6 +26,7 @@ export const UserActions = ({ params, rowId, setRowId }: ActionProps) => {
         params.row.charge_prod_hse,
         params.row.part_operation,
         params.row.part_patrimoine,
+        params.row.part_hse,
         params.row.pilote_externe,
         params.row.pilote_externe2,
         params.row.arbitrage,
