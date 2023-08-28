@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-Faire tourner le projet sur React Vite
+Faire tourner le projet avec React Vite
 
 ```js
   npm run dev
