@@ -2,16 +2,17 @@
 
 ## Description
 
-Bienvenue dans le référentiel GitHub du projet **SIMCITY** ! Ce projet a été développé pour répondre au besoin de gestion des BTS de Cellnex ainsi que des MOAD. Nous utilisons une combinaison de technologies pour offrir une solution efficace et conviviale.
+Bienvenue dans le référentiel GitHub du projet **SIMCITY** ! Ce projet a été développé pour répondre au besoin de gestion des BTS de Cellnex ainsi que des MOAD en utilisant TypeScript. Nous utilisons une combinaison de technologies pour offrir une solution efficace et conviviale.
 
 ## Objectif
 
-L'objectif principal de SIMCITY est de fournir un système de gestion pour les BTS (Base Transceiver Stations) de Cellnex et les MOAD (Matériel d'Opération et d'Administration à Distance). Il s'agit d'un outil essentiel pour rationaliser les opérations de gestion et améliorer l'efficacité dans le suivi et la maintenance de ces éléments essentiels.
+L'objectif principal de SIMCITY est de fournir un système de gestion en TypeScript pour les BTS (Base Transceiver Stations) de Cellnex et les MOAD (Matériel d'Opération et d'Administration à Distance). Il s'agit d'un outil essentiel pour rationaliser les opérations de gestion et améliorer l'efficacité dans le suivi et la maintenance de ces éléments essentiels.
 
 ## Stacks Utilisées
 
 - **Frontend :**
-  - **React** - Une bibliothèque JavaScript pour construire l'interface utilisateur.
+  - **React** - Une bibliothèque JavaScript/TypeScript pour construire l'interface utilisateur.
+  - **TypeScript** - Un sur-ensemble de JavaScript apportant le typage statique.
   - **CSS** - Utilisé pour la mise en page et le style.
   - **Tailwind CSS** - Un framework CSS utilitaire pour une conception rapide et flexible.
   - **mui Data Grid** - Une bibliothèque pour afficher des données tabulaires dans des interfaces réactives.
@@ -41,6 +42,6 @@ Nous accueillons les contributions de la communauté ! Si vous souhaitez contrib
 
 ## Remarque
 
-Ce projet a été créé dans le cadre de notre engagement à fournir une solution de gestion avancée pour les BTS de Cellnex et les MOAD. Nous apprécions tout retour d'information, signalement de bogues et contributions pour améliorer ce projet.
+Ce projet a été créé dans le cadre de notre engagement à fournir une solution de gestion avancée en TypeScript pour les BTS de Cellnex et les MOAD. Nous apprécions tout retour d'information, signalement de bogues et contributions pour améliorer ce projet.
 
 Merci d'avoir choisi **SIMCITY** !
