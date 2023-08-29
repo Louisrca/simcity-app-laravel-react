@@ -3,6 +3,7 @@ import { BtsTableFM } from "../../table/bts/BtsTableFM";
 import { BtsTableAGH } from "../../table/bts/BtsTableAGH";
 import s from "./Dashboard.module.css";
 import { useAuth } from "../../context/auth/AuthContext";
+import { ChartCard } from "../../chartCart/ChartCard";
 
 export const Dashboard = () => {
   const { meData, error } = useAuth();
@@ -11,6 +12,7 @@ export const Dashboard = () => {
   return (
     <div className={s.dashboardView}>
       <h1>Dashboard</h1>
+      <ChartCard />
       {user && (
         <h4>Connecté en tant que {user.firstname + " " + user.lastname}</h4>
       )}
