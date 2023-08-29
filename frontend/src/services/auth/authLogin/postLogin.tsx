@@ -28,24 +28,7 @@ export const postLogin = async (
       );
     }
     return response.json().then((data) => {
-      const userPersonalData = [
-        {
-          firstname: data.user.firstname,
-          lastname: data.user.lastname,
-          pseudo: data.user.pseudo,
-          email: data.user.email,
-          role: data.user.role,
-          tags: data.user.tags,
-          status: data.user.status,
-        },
-      ];
-      // Cookies.set("user", "token : " + data.token, { expires: 7 });
       localStorage.setItem("userToken", JSON.stringify(data.token));
-      // localStorage.setItem(
-      //   "userPersonalData",
-      //   JSON.stringify(userPersonalData)
-      // );
-      // console.log(JSON.stringify(userPersonalData));
     });
   });
 };
