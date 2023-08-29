@@ -82,7 +82,7 @@ export const AuthLogin = () => {
               </Typography> */}
               <img
                 className={s.imgLogo}
-                src={"src/common/images/LogoSimCity.jpg"}
+                src={"./src/common/images/LogoSimCity.jpg"}
                 alt=""
               />
             </div>
