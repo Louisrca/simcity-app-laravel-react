@@ -21,6 +21,7 @@ export const BtsTable = () => {
 
   const [rowId, setRowId] = useState<any>();
   const { btsData, loading } = dataTable;
+
   const rows: GridRowsProp = btsData;
   const columns: GridColDef[] = [
     {
@@ -191,7 +192,7 @@ export const BtsTable = () => {
         <Button
           color="primary"
           onClick={() => {
-            navigate("/profile?" + params.row.code_site);
+            navigate("/portails?id=" + params.row.code_site);
           }}
         >
           <WriteIcon color="#59aa33" />
@@ -206,7 +207,7 @@ export const BtsTable = () => {
         <Button
           color="primary"
           onClick={() => {
-            navigate("/profile?" + params.row.code_site);
+            navigate("/portails?id=" + params.row.code_site);
           }}
         >
           <FormIcon color="#59aa33" />

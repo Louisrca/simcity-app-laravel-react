@@ -60,7 +60,7 @@ export const BtsTableFM = () => {
         <Button
           color="primary"
           onClick={() => {
-            navigate("/profile?" + params.row.code_site);
+            navigate("/portails?id=" + params.row.code_site);
           }}
         >
           <WriteIcon color="#59aa33" />
