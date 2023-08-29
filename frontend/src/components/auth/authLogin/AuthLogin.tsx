@@ -7,7 +7,6 @@ import s from "./AuthLogin.module.css";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-// import LogoSimCity from "./src/assets/LogoSimCity.png";
 // import FormControlLabel from "@mui/material/FormControlLabel";
 // import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
@@ -83,7 +82,7 @@ export const AuthLogin = () => {
               </Typography> */}
               <img
                 className={s.imgLogo}
-                src={"src/assets/LogoSimCity.png"}
+                src="src/assets/LogoSimCity.jpg"
                 alt="LogoSimCity"
               />
             </div>
