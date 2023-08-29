@@ -92,9 +92,20 @@ export const HeaderForm = () => {
                   <h5>AVIS HSE</h5>
                   <p>{btsData && btsData.avis_hse}</p>
                 </div>
+                <div>
+                  <h5>SYNTHESE</h5>
+                  <p>{btsData && btsData.synthese}</p>
+                </div>
               </div>
             </div>
-            <div className={s.HeaderData}></div>
+            <div className={s.HeaderData}>
+              <h5>Etat d'Analyse</h5>
+              <p>{btsData && btsData.etat}</p>
+            </div>
+            <div className={s.HeaderData}>
+              <h5>Arbitrage</h5>
+              <p>{btsData && btsData.arbitrage}</p>
+            </div>
           </div>
         </div>
 
