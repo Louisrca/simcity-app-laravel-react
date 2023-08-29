@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import LogoSimCity from "src/assets/LogoSimCity.jpg";
+import LogoSimCity from "/src/assets/LogoSimCity.jpg";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function Copyright(props: any) {
