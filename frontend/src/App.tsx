@@ -3,7 +3,7 @@ import { Home } from "./components/pages/Home/Home";
 import { Dashboard } from "./components/pages/Dashboard/Dashboard";
 import { AuthLayouts } from "./components/layout/authLayout/AuthLayout";
 import { PageLayout } from "./components/layout/pageLayout/PageLayout";
-import { Profile } from "./components/pages/AnalysisForm/AnalysisForm";
+import { Analysis } from "./components/pages/Analysis/Analysis";
 import { AuthProvider } from "./components/context/auth/AuthContext";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -46,7 +46,7 @@ function App() {
           element={
             <AuthProvider>
               <PageLayout>
-                <Profile />
+                <Analysis />
               </PageLayout>
             </AuthProvider>
           }

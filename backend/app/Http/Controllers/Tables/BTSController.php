@@ -39,6 +39,11 @@ class BTSController extends Controller
         return response()->json($filterFM);  
     }
 
+    public function StoreById($code_site){
+        $btsById = Tbd_bts::where('code_site', $code_site)->get();
+        return response()->json($btsById);  
+    }
+
 
     public function EditTable (Request $request){
 

@@ -35,3 +35,4 @@ Route::middleware(['auth:sanctum'])->get("/user/me", [AuthController::class, "me
 //Tables BTS
 Route::middleware(['auth:sanctum'])->get("/table/all-bts", [BTSController::class, "index"]);
 Route::middleware(['auth:sanctum'])->post("/table/edit-bts-table", [BTSController::class, "EditTable"]);
+Route::middleware(['auth:sanctum'])->get("/table/store-by-id/{code_site}", [BTSController::class, "StoreById"]);
