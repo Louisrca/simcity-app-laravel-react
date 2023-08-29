@@ -2,6 +2,7 @@ import { HeaderFormLayout } from "../../layout/headerFormLayout/HeaderFormLayout
 import { handleSetAnalysData } from "../../../hooks/handleSetAnalysData";
 import { useNavigate } from "react-router-dom";
 import s from "../AnalysisForm.module.css";
+import { TextField } from "@mui/material";
 
 export const HeaderForm = () => {
   const navigate = useNavigate();
@@ -17,28 +18,64 @@ export const HeaderForm = () => {
         <div className={s.headerGrid}>
           <div className={s.topHeaderGrid}>
             <div className={s.HeaderData}>
-              <h5>Code Site</h5>
-              <p>{btsData && btsData.code_site}</p>
+              <TextField
+                id="outlined-controlled"
+                label="Code Site"
+                disabled
+                size="small"
+                InputLabelProps={{ shrink: true }}
+                value={btsData && btsData.code_site}
+              />
             </div>
             <div className={s.HeaderData}>
-              <h5>Type Infra</h5>
-              <p>{btsData && btsData.type_infra}</p>
+              <TextField
+                id="outlined-controlled"
+                label="Type Infrastructure"
+                disabled
+                size="small"
+                InputLabelProps={{ shrink: true }}
+                value={btsData && btsData.code_site}
+              />
             </div>
             <div className={s.HeaderData}>
-              <h5>Loyer Déclaré FM</h5>
-              <p>{btsData && btsData.loyer_declare_fm}€</p>
+              <TextField
+                id="outlined-controlled"
+                label="Loyer Déclaré FM €"
+                disabled
+                size="small"
+                InputLabelProps={{ shrink: true }}
+                value={btsData && btsData.loyer_declare_fm}
+              />
             </div>
             <div className={s.HeaderData}>
-              <h5>CDP OP</h5>
-              <p>{btsData && btsData.charge_prod_ope}</p>
+              <TextField
+                id="outlined-controlled"
+                label="CDP OP"
+                disabled
+                size="small"
+                InputLabelProps={{ shrink: true }}
+                value={btsData && btsData.charge_prod_ope}
+              />
             </div>
             <div className={s.HeaderData}>
-              <h5>CDP SM</h5>
-              <p>{btsData && btsData.charge_prod_sm}</p>
+              <TextField
+                id="outlined-controlled"
+                label="CDP SM"
+                disabled
+                size="small"
+                InputLabelProps={{ shrink: true }}
+                value={btsData && btsData.charge_prod_sm}
+              />
             </div>
             <div className={s.HeaderData}>
-              <h5>CDP HSE</h5>
-              <p>{btsData && btsData.charge_prod_hse}</p>
+              <TextField
+                id="outlined-controlled"
+                label="CDP HSE"
+                disabled
+                size="small"
+                InputLabelProps={{ shrink: true }}
+                value={btsData && btsData.charge_prod_hse}
+              />
             </div>
           </div>
 
@@ -100,14 +137,25 @@ export const HeaderForm = () => {
               </div>
             </div>
             <div className={s.HeaderData}>
-              <h5>Etat d'Analyse</h5>
-              <p>{btsData && btsData.etat}</p>
+              <TextField
+                id="outlined-controlled"
+                label="Etat d'analyse"
+                disabled
+                size="small"
+                InputLabelProps={{ shrink: true }}
+                value={btsData && btsData.etat}
+              />
             </div>
             <div className={s.HeaderData}>
-              <h5>Arbitrage</h5>
-              <p>{btsData && btsData.arbitrage}</p>
+              <TextField
+                id="outlined-controlled"
+                label="Arbitrage"
+                disabled
+                size="small"
+                InputLabelProps={{ shrink: true }}
+                value={btsData && btsData.arbitrage}
+              />
             </div>
-
           </div>
         </div>
 
