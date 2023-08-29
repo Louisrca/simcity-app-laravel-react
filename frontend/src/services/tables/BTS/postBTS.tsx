@@ -14,7 +14,7 @@ export const postBTS = async (
   date_acceptation: string
 ) => {
   const token = localStorage.getItem("userToken");
-  const tokenWithoutQuotes = token.replace(/^"(.*)"$/, "$1");
+  const tokenWithoutQuotes = token?.replace(/^"(.*)"$/, "$1");
   if (token !== null) {
     return await fetch("http://127.0.0.1:8000/api/table/edit-bts-table", {
       method: "POST",

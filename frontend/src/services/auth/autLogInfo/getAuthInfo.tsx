@@ -1,6 +1,6 @@
 export const getAuthInfo = async () => {
   const token = localStorage.getItem("userToken");
-  const tokenWithoutQuotes = token.replace(/^"(.*)"$/, "$1");
+  const tokenWithoutQuotes = token?.replace(/^"(.*)"$/, "$1");
   if (token !== null) {
     return await fetch("http://127.0.0.1:8000/api/user/me", {
       method: "GET",

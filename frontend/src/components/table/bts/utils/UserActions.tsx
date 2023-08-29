@@ -1,4 +1,4 @@
-import s from "../BtsTable.module.css";
+// import s from "../BtsTable.module.css";
 import { useState } from "react";
 import { postBTS } from "../../../../services/tables/BTS/postBTS";
 import { Box, Fab, CircularProgress } from "@mui/material";
@@ -14,6 +14,7 @@ type ActionProps = {
 export const UserActions = ({ params, rowId, setRowId }: ActionProps) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  console.log(setRowId);
   const handleSubmit = async () => {
     console.log(params.row.code_site);
     try {
