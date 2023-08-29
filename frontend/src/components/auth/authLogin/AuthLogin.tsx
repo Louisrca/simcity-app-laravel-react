@@ -7,6 +7,7 @@ import s from "./AuthLogin.module.css";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
+import LogoSimCity from "src/common/images/LogoSimCity.png";
 // import FormControlLabel from "@mui/material/FormControlLabel";
 // import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
@@ -80,11 +81,7 @@ export const AuthLogin = () => {
               {/* <Typography component="h1" variant="h3">
                 SIMCITY
               </Typography> */}
-              <img
-                className={s.imgLogo}
-                src={"./src/common/images/LogoSimCity.jpg"}
-                alt="LogoSimCity"
-              />
+              <img className={s.imgLogo} src={LogoSimCity} alt="LogoSimCity" />
             </div>
 
             <Box
