@@ -2,7 +2,7 @@ import TabsList from "@mui/base/TabsList";
 import Tabs from "@mui/base/Tabs";
 import Option from "@mui/joy/Option";
 import { useNavigate } from "react-router-dom";
-// import s from "./Navbar.module.css";
+import s from "./Navbar.module.css";
 import { postLogout } from "../../services/auth/authLogout/postLogout";
 import { LogoutIcon } from "../../common/icons/LogoutIcon";
 import { IconLayouts } from "../layout/iconLayouts/IconLayout";
