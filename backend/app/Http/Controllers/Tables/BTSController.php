@@ -15,6 +15,8 @@ class BTSController extends Controller
         }
         else if(auth()->user()->role == 'ext'){
             return $this->FMData();
+        }else if(auth()->user()->role == 'pilote_AGH'){
+            return $this->AGHData();
         }
     }
     public function adminData(){
@@ -22,7 +24,7 @@ class BTSController extends Controller
         return response()->json($AllBts);  
     }
     public function FMData(){
-        $filterFM = Tbd_bts::select('date_cession', 'code_site','controle_clnx', 'prioritaire','etat', 'arbitrage','avis_op','avis_sm','avis_hse', 'synthese', 'date_dernier_commentaire', 'date_dernier_commentaire_fm')
+        $filterFM = Tbd_bts::select('id','date_cession', 'code_site','controle_clnx', 'prioritaire','etat', 'arbitrage','avis_op','avis_sm','avis_hse', 'synthese', 'date_dernier_commentaire', 'date_dernier_commentaire_fm')
         ->where('arbitrage', 'Annexe 2 avec réserves')
         ->orWhere('arbitrage', 'L.D.R en cours')
         ->orWhere('arbitrage', 'OK pour cession')
@@ -31,10 +33,16 @@ class BTSController extends Controller
         return response()->json($filterFM);  
     }
 
+    public function AGHData(){
+        $filterFM = Tbd_bts::select('id','date_cession', 'code_site','controle_clnx', 'cp','ville','type_infra','adresse','classe_site','loyer_declare_fm','etat', 'arbitrage','avis_op','avis_sm','avis_hse', 'synthese', 'date_dernier_commentaire', 'date_dernier_commentaire_fm')
+        ->get();
+        return response()->json($filterFM);  
+    }
+
 
     public function EditTable (Request $request){
 
-        if (auth()->user()->role !== 'admin') {
+        if (auth()->user()->role !== 'admin' && auth()->user()->role !== 'direction') {
             return response()->json(['message' => 'Permission denied'], 403);
         }
     
@@ -48,6 +56,7 @@ class BTSController extends Controller
             'charge_prod_hse'=>'nullable',
             'part_operation'=>'nullable',
             'part_patrimoine'=>'nullable',
+            'part_hse'=>'nullable',
             'pilote_externe'=>'nullable',
             'pilote_externe2'=>'nullable',
             'arbitrage'=>'nullable',

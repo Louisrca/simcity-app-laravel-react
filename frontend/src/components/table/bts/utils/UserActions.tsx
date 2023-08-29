@@ -1,6 +1,6 @@
 import s from "../BtsTable.module.css";
-import { useState, useEffect } from "react";
-import { postBTS } from "../../../services/tables/BTS/postBTS";
+import { useState } from "react";
+import { postBTS } from "../../../../services/tables/BTS/postBTS";
 import { Box, Fab, CircularProgress } from "@mui/material";
 import { Check, Save } from "@mui/icons-material";
 import { green } from "@mui/material/colors";
@@ -26,6 +26,7 @@ export const UserActions = ({ params, rowId, setRowId }: ActionProps) => {
         params.row.charge_prod_hse,
         params.row.part_operation,
         params.row.part_patrimoine,
+        params.row.part_hse,
         params.row.pilote_externe,
         params.row.pilote_externe2,
         params.row.arbitrage,
@@ -52,6 +53,7 @@ export const UserActions = ({ params, rowId, setRowId }: ActionProps) => {
             bgcolor: green[500],
             "&:hover": { bgcolor: green[700] },
           }}
+          onClick={handleSubmit}
         >
           <Check />
         </Fab>
@@ -70,7 +72,7 @@ export const UserActions = ({ params, rowId, setRowId }: ActionProps) => {
           size={52}
           sx={{
             color: green[500],
-            position: "relative",
+            position: "absolute",
             top: -6,
             left: -6,
             zIndex: 1,

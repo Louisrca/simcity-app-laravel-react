@@ -40,10 +40,10 @@ export const Navbar = () => {
               <button
                 type="button"
                 onClick={() => {
-                  navigate("/profile");
+                  navigate("/portails");
                 }}
               >
-                Profile
+                Portails
               </button>
 
               <SelectIndicator title="WIKI OUTILS">
