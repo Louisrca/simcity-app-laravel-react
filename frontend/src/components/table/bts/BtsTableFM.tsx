@@ -7,26 +7,14 @@ import {
 } from "@mui/x-data-grid";
 import s from "./BtsTable.module.css";
 import { WriteIcon } from "../../../common/icons/WriteIcon";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { getBTS } from "../../../services/tables/BTS/getBTS";
 import { Button } from "@mui/base";
+import { handleSetDataTable } from "../../../hooks/handleSetDataTable";
 export const BtsTableFM = () => {
   const navigate = useNavigate();
-  const [btsData, setBtsData] = useState<any>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const dataTable = handleSetDataTable();
 
-  useEffect(() => {
-    setLoading(true);
-    getBTS()
-      .then((Btsdata) => {
-        setBtsData(Btsdata);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Une erreur s'est produite :", error);
-      });
-  }, []);
+  const { btsData, loading } = dataTable;
 
   const rows: GridRowsProp = btsData;
   const columns: GridColDef[] = [
@@ -106,7 +94,6 @@ export const BtsTableFM = () => {
                 toolbarColumns: "Colonnes",
               }}
               rows={rows}
-              checkboxSelection
               disableRowSelectionOnClick
               {...rows}
               columns={columns}

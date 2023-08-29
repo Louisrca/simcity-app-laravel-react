@@ -42,7 +42,7 @@ class BTSController extends Controller
 
     public function EditTable (Request $request){
 
-        if (auth()->user()->role !== 'admin') {
+        if (auth()->user()->role !== 'admin' && auth()->user()->role !== 'direction') {
             return response()->json(['message' => 'Permission denied'], 403);
         }
     

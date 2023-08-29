@@ -4,35 +4,23 @@ import {
   GridRowsProp,
   GridColDef,
   GridToolbar,
-  GridColumnHeaderParams,
 } from "@mui/x-data-grid";
 import { HeaderColumnEdit } from "../../../common/icons/HeaderColumnEdit";
 import { WriteIcon } from "../../../common/icons/WriteIcon";
 import { FormIcon } from "../../../common/icons/FormIcon";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
-import { getBTS } from "../../../services/tables/BTS/getBTS";
 import { Button } from "@mui/base";
 import { UserActions } from "./utils/UserActions";
 import s from "./BtsTable.module.css";
+import { handleSetDataTable } from "../../../hooks/handleSetDataTable";
+
 export const BtsTable = () => {
   const navigate = useNavigate();
-  const [btsData, setBtsData] = useState<any>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const dataTable = handleSetDataTable();
+
   const [rowId, setRowId] = useState<any>();
-
-  useEffect(() => {
-    setLoading(true);
-    getBTS()
-      .then((Btsdata) => {
-        setBtsData(Btsdata);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Une erreur s'est produite :", error);
-      });
-  }, []);
-
+  const { btsData, loading } = dataTable;
   const rows: GridRowsProp = btsData;
   const columns: GridColDef[] = [
     {
@@ -46,7 +34,7 @@ export const BtsTable = () => {
     { field: "gb", headerName: "G.B", width: 150 },
     {
       field: "controle_clnx",
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
           {"Contrôle CLNX "}
           <HeaderColumnEdit color="black" />
@@ -63,7 +51,7 @@ export const BtsTable = () => {
     { field: "ville", headerName: "Ville", width: 150 },
     {
       field: "loyer_declare_fm",
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
           {"Loyer Déclaré FM (en €)"}
           <HeaderColumnEdit color="black" />
@@ -74,7 +62,7 @@ export const BtsTable = () => {
     },
     {
       field: "charge_prod_ope",
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
           {"C.D.P OPE"}
           <HeaderColumnEdit color="black" />
@@ -85,7 +73,7 @@ export const BtsTable = () => {
     },
     {
       field: "charge_prod_sm",
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
           {"C.D.P SM"}
           <HeaderColumnEdit color="black" />
@@ -96,7 +84,7 @@ export const BtsTable = () => {
     },
     {
       field: "charge_prod_hse",
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
           {"C.D.P HSE"}
           <HeaderColumnEdit color="black" />
@@ -107,7 +95,7 @@ export const BtsTable = () => {
     },
     {
       field: "part_operation",
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
           {"Part Opération"}
           <HeaderColumnEdit color="black" />
@@ -118,7 +106,7 @@ export const BtsTable = () => {
     },
     {
       field: "part_patrimoine",
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
           {"Part Patrimoine"}
           <HeaderColumnEdit color="black" />
@@ -129,7 +117,7 @@ export const BtsTable = () => {
     },
     {
       field: "part_hse",
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
           {"Part HSE"}
           <HeaderColumnEdit color="black" />
@@ -140,9 +128,9 @@ export const BtsTable = () => {
     },
     {
       field: "pilote_externe",
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
-          {"Pilote Externe OPE"}
+          {"Pilote Externe"}
           <HeaderColumnEdit color="black" />
         </strong>
       ),
@@ -159,7 +147,7 @@ export const BtsTable = () => {
     { field: "etat", headerName: "Etat Analyse", width: 150 },
     {
       field: "arbitrage",
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
           {"Statut"}
           <HeaderColumnEdit color="black" />
@@ -177,9 +165,9 @@ export const BtsTable = () => {
     {
       field: "date_acceptation",
       width: 150,
-      renderHeader: (params: GridColumnHeaderParams) => (
+      renderHeader: () => (
         <strong>
-          {"Date Accecptation"}
+          {"Date Acceptation"}
           <HeaderColumnEdit color="black" />
         </strong>
       ),
@@ -257,7 +245,6 @@ export const BtsTable = () => {
                 toolbarColumns: "Colonnes",
               }}
               rows={rows}
-              checkboxSelection
               disableRowSelectionOnClick
               {...rows}
               columns={columns}

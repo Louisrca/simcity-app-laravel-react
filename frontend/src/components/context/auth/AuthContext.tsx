@@ -44,6 +44,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       });
   }, []);
 
+  // console.log(meData);
+
   const authContextValue: AuthContextType = { meData, error };
 
   return (
