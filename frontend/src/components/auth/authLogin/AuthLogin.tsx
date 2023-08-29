@@ -81,7 +81,7 @@ export const AuthLogin = () => {
               {/* <Typography component="h1" variant="h3">
                 SIMCITY
               </Typography> */}
-              <img className={s.imgLogo} src={LogoSimCity} alt="LogoSimCity" />
+              <img className={s.imgLogo} src={"./src/assets/LogoSimCity.png"} alt="LogoSimCity" />
             </div>
 
             <Box
