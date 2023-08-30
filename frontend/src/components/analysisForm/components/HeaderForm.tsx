@@ -3,6 +3,8 @@ import { handleSetAnalysData } from "../../../hooks/handleSetAnalysData";
 import { useNavigate } from "react-router-dom";
 import s from "../AnalysisForm.module.css";
 import { TextField } from "@mui/material";
+import { CircleSyntheseAnalyse } from "../../../common/icons/CircleSyntheseAnalyse";
+import { CircleNoneSyntheseAnalyse } from "../../../common/icons/CircleNoneSyntheseAnalyse";
 
 export const HeaderForm = () => {
   const navigate = useNavigate();
@@ -12,6 +14,7 @@ export const HeaderForm = () => {
 
   const btsData = btsDataById[0];
   console.log(btsData);
+
   return (
     <>
       <HeaderFormLayout>
@@ -119,20 +122,76 @@ export const HeaderForm = () => {
               <div className={s.syntheseData}>
                 <div>
                   <h5>AVIS OP</h5>
-                  <p>{btsData && btsData.avis_op}</p>
+                  <p>
+                    {btsData && btsData.avis_op === "OK" ? (
+                      <CircleSyntheseAnalyse
+                        color="rgb(4, 120, 87)"
+                        width="16"
+                      />
+                    ) : btsData && btsData.avis_op === "Bloquant" ? (
+                      <CircleSyntheseAnalyse
+                        color="rgb(190, 18, 60)"
+                        width="16"
+                      />
+                    ) : (
+                      <CircleNoneSyntheseAnalyse color="black" width="16" />
+                    )}
+                  </p>
                 </div>
                 <div>
                   <h5>AVIS SM</h5>
-                  <p>{btsData && btsData.avis_sm}</p>
+                  <p>
+                    {btsData && btsData.avis_sm === "OK" ? (
+                      <CircleSyntheseAnalyse
+                        color="rgb(4, 120, 87)"
+                        width="16"
+                      />
+                    ) : btsData && btsData.avis_sm === "Bloquant" ? (
+                      <CircleSyntheseAnalyse
+                        color="rgb(190, 18, 60)"
+                        width="16"
+                      />
+                    ) : (
+                      <CircleNoneSyntheseAnalyse color="black" width="16" />
+                    )}
+                  </p>
                 </div>
                 <div>
                   <h5>AVIS HSE</h5>
-                  <p>{btsData && btsData.avis_hse}</p>
+                  <p>
+                    {btsData && btsData.avis_hse === "OK" ? (
+                      <CircleSyntheseAnalyse
+                        color="rgb(4, 120, 87)"
+                        width="16"
+                      />
+                    ) : btsData && btsData.avis_hse === "Bloquant" ? (
+                      <CircleSyntheseAnalyse
+                        color="rgb(190, 18, 60)"
+                        width="16"
+                      />
+                    ) : (
+                      <CircleNoneSyntheseAnalyse color="black" width="16" />
+                    )}
+                  </p>
                 </div>
 
                 <div>
                   <h5>SYNTHESE</h5>
-                  <p>{btsData && btsData.synthese}</p>
+                  <p>
+                    {btsData && btsData.synthese === "OK" ? (
+                      <CircleSyntheseAnalyse
+                        color="rgb(4, 120, 87)"
+                        width="16"
+                      />
+                    ) : btsData && btsData.synthese === "Bloquant" ? (
+                      <CircleSyntheseAnalyse
+                        color="rgb(190, 18, 60)"
+                        width="16"
+                      />
+                    ) : (
+                      <CircleNoneSyntheseAnalyse color="black" width="16" />
+                    )}
+                  </p>
                 </div>
               </div>
             </div>
