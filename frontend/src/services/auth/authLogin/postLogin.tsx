@@ -1,12 +1,10 @@
 import { AuthentificationFailed } from "./types";
-import Cookies from "js-cookie";
-// import Cookies from "js-cookie";
 export const postLogin = async (
   csrfToken: string,
   email: string,
   password: string
 ): Promise<any> => {
-  await fetch("http://127.0.0.1:8000/api/user/login", {
+  await fetch("https://simcity-app-laravel-react-5ard.vercel.app/api/user/login", {
     method: "POST",
     mode: "cors",
     headers: new Headers({

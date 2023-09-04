@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useState } from "react";
 import { getBTS } from "../services/tables/BTS/getBTS";
 
 export const handleSetDataTable = () => {
