@@ -23,6 +23,7 @@ export const BtsTable = () => {
   const { btsData, loading } = dataTable;
 
   const rows: GridRowsProp = btsData;
+
   const columns: GridColDef[] = [
     {
       field: "date_cession",
@@ -207,7 +208,9 @@ export const BtsTable = () => {
         <Button
           color="primary"
           onClick={() => {
-            navigate("/portails?id=" + params.row.code_site+"&analyse=operation");
+            navigate(
+              "/portails?id=" + params.row.code_site + "&analyse=operation"
+            );
           }}
         >
           <FormIcon color="#59aa33" />

@@ -28,11 +28,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   width: 100%;
 }
 .syntheseData h5,
 .syntheseData p {
   margin: 0;
+  width: 65px;
+  text-align: center;
 }
 .syntheseData div {
   margin: 0 0.7em 0 0.7em;

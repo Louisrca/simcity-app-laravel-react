@@ -27,6 +27,12 @@ export const HeaderForm = () => {
                 disabled
                 size="small"
                 InputLabelProps={{ shrink: true }}
+                sx={{
+                  "& .MuiInputLabel-root.Mui-disabled": {
+                    WebkitTextFillColor: "rgb(33, 53, 71)",
+                    // fontWeight: "bold",
+                  },
+                }}
                 value={btsData && btsData.code_site}
               />
             </div>
@@ -37,7 +43,13 @@ export const HeaderForm = () => {
                 disabled
                 size="small"
                 InputLabelProps={{ shrink: true }}
-                value={btsData && btsData.code_site}
+                sx={{
+                  "& .MuiInputLabel-root.Mui-disabled": {
+                    WebkitTextFillColor: "rgb(33, 53, 71)",
+                    // fontWeight: "bold",
+                  },
+                }}
+                value={btsData && btsData.type_infra}
               />
             </div>
             <div className={s.HeaderData}>
@@ -47,6 +59,12 @@ export const HeaderForm = () => {
                 disabled
                 size="small"
                 InputLabelProps={{ shrink: true }}
+                sx={{
+                  "& .MuiInputLabel-root.Mui-disabled": {
+                    WebkitTextFillColor: "#1976d2",
+                    // fontWeight: "bold",
+                  },
+                }}
                 value={btsData && btsData.loyer_declare_fm}
               />
             </div>
@@ -57,6 +75,12 @@ export const HeaderForm = () => {
                 disabled
                 size="small"
                 InputLabelProps={{ shrink: true }}
+                sx={{
+                  "& .MuiInputLabel-root.Mui-disabled": {
+                    WebkitTextFillColor: "rgb(33, 53, 71)",
+                    // fontWeight: "bold",
+                  },
+                }}
                 value={btsData && btsData.charge_prod_ope}
               />
             </div>
@@ -67,6 +91,12 @@ export const HeaderForm = () => {
                 disabled
                 size="small"
                 InputLabelProps={{ shrink: true }}
+                sx={{
+                  "& .MuiInputLabel-root.Mui-disabled": {
+                    WebkitTextFillColor: "rgb(33, 53, 71)",
+                    // fontWeight: "bold",
+                  },
+                }}
                 value={btsData && btsData.charge_prod_sm}
               />
             </div>
@@ -77,6 +107,12 @@ export const HeaderForm = () => {
                 disabled
                 size="small"
                 InputLabelProps={{ shrink: true }}
+                sx={{
+                  "& .MuiInputLabel-root.Mui-disabled": {
+                    WebkitTextFillColor: "rgb(33, 53, 71)",
+                    // fontWeight: "bold",
+                  },
+                }}
                 value={btsData && btsData.charge_prod_hse}
               />
             </div>
@@ -202,6 +238,12 @@ export const HeaderForm = () => {
                 disabled
                 size="small"
                 InputLabelProps={{ shrink: true }}
+                sx={{
+                  "& .MuiInputLabel-root.Mui-disabled": {
+                    WebkitTextFillColor: "orange",
+                    // fontWeight: "bold",
+                  },
+                }}
                 value={btsData && btsData.etat}
               />
             </div>
@@ -212,6 +254,12 @@ export const HeaderForm = () => {
                 disabled
                 size="small"
                 InputLabelProps={{ shrink: true }}
+                sx={{
+                  "& .MuiInputLabel-root.Mui-disabled": {
+                    WebkitTextFillColor: "rgb(33, 53, 71)",
+                    // fontWeight: "bold",
+                  },
+                }}
                 value={btsData && btsData.arbitrage}
               />
             </div>
