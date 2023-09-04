@@ -1,36 +1,44 @@
-.headerGrid {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  margin: 0;
-
+.header {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-
+  align-items: center;
+}
+.headerGrid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
 }
 
 .topHeaderGrid,
 .bottomHeaderGrid {
   display: flex;
   flex-direction: row;
-  margin: 0 0.7em 0 0.7em;
+  align-items: center;
+  padding: 1em;
 }
 
 .HeaderData {
   padding: 0 0.7em 0 0.7em;
   height: auto;
-
-  width: 100%;
-
 }
 
 .syntheseData {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.syntheseData h5,
+.syntheseData p {
+  margin: 0;
+  width: 65px;
+  text-align: center;
 }
 .syntheseData div {
   margin: 0 0.7em 0 0.7em;
-
-  width: 100px;
-
 }
 
 .headerLink {

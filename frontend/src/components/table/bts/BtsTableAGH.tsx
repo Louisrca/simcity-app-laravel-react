@@ -71,7 +71,9 @@ export const BtsTableAGH = () => {
         <Button
           color="primary"
           onClick={() => {
-            navigate("/portails?id=" + params.row.code_site);
+            navigate(
+              "/portails?id=" + params.row.code_site + "&analyse=operation"
+            );
           }}
         >
           <FormIcon color="#59aa33" />

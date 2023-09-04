@@ -80,17 +80,12 @@ class AuthController extends Controller
                     'message' => ['These credentials do not match our records.']
                 ], 404);
             }
-            // $rememberMe = $request->has('remember_me');
-          
-            // $expiration = $rememberMe ? now()->addMonth() : null;
-            // $token = $this->generateJWT($user);
             $token = $user->createToken('auth_token')->plainTextToken;
+            
             $response = [
                 'user' => $user,
                 'token' => $token
             ];
-            // $expirationInSeconds = 3600;
-            // Cookie::make('jwt_token', "test_cookie", $expirationInSeconds, null, null, false, true, false, null);
             return response($response, 201);
     }
 

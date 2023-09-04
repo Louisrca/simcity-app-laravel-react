@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { getBTS } from "../services/tables/BTS/getBTS";
 
 export const handleSetDataTable = () => {
@@ -6,16 +6,28 @@ export const handleSetDataTable = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setLoading(true);
-    getBTS()
-      .then((Btsdata) => {
-        setBtsData(Btsdata);
+    // Define an async function to fetch the BTS data
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const storedData = localStorage.getItem("btsData");
+        if (storedData) {
+          setBtsData(JSON.parse(storedData));
+        } else {
+          const Btsdata = await getBTS();
+          setBtsData(Btsdata);
+          localStorage.setItem("btsData", JSON.stringify(Btsdata));
+        }
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Une erreur s'est produite :", error);
-      });
-  }, []);
+        setLoading(false);
+      }
+    };
+
+    // Call the fetchData function only when the component mounts
+    fetchData();
+  }, []); // Empty dependency array ensures this effect runs once
 
   const data = { btsData, loading };
   return data;
