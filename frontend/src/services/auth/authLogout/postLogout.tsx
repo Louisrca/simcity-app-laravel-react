@@ -15,9 +15,13 @@ export const postLogout = async (): Promise<any> => {
       console.log("LOGOUT_FAILURE", error);
     })
     .then(() => {
-      localStorage.removeItem("userToken");
-      localStorage.removeItem("userPersonalData");
+      // localStorage.removeItem("userToken");
+      // localStorage.removeItem("userPersonalData");
+      // localStorage.removeItem("btsData");
+
+      localStorage.clear();
       Cookies.remove("user");
-      Cookies.remove("jwt-token");
+      Cookies.remove("access_token");
+      window.location.reload();
     });
 };

@@ -224,6 +224,22 @@ export const BtsTable = () => {
     },
   ];
 
+  const saveStateGridSortVisibility = (model: any) => {
+    const m = model;
+    localStorage.setItem("gridStateSort", JSON.stringify(m));
+  };
+  const saveStateGridFilterVisibility = (model: any) => {
+    const m = model;
+    localStorage.setItem("gridStateFIlter", JSON.stringify(m));
+  };
+  const saveStateGridPaginationVisibility = (model: any) => {
+    const m = model;
+    localStorage.setItem("gridStatePagination", JSON.stringify(m));
+  };
+  const storedSortModel = localStorage.getItem("gridStateSort");
+  const storedFilterModel = localStorage.getItem("gridStateFIlter");
+  const storedPaginationModel = localStorage.getItem("gridStatePagination");
+
   return (
     <>
       {loading ? (
@@ -264,10 +280,27 @@ export const BtsTable = () => {
                 },
               }}
               initialState={{
-                pagination: { paginationModel: { pageSize: 5 } },
+                pagination: {
+                  paginationModel: storedPaginationModel
+                    ? JSON.parse(storedPaginationModel)
+                    : { pageSize: 5},
+                },
+                sorting: {
+                  sortModel: storedSortModel
+                    ? JSON.parse(storedSortModel)
+                    : null,
+                },
+                filter: {
+                  filterModel: storedFilterModel
+                    ? JSON.parse(storedFilterModel)
+                    : null,
+                },
               }}
               pageSizeOptions={[5, 10, 25, 50, 100]}
               onCellEditStop={(params: { id: any }) => setRowId(params.id)}
+              onFilterModelChange={saveStateGridFilterVisibility}
+              onSortModelChange={saveStateGridSortVisibility}
+              onPaginationModelChange={saveStateGridPaginationVisibility}
             />
           </Box>
         </div>

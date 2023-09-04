@@ -1,4 +1,5 @@
 import { AuthentificationFailed } from "./types";
+import Cookies from "js-cookie";
 // import Cookies from "js-cookie";
 export const postLogin = async (
   csrfToken: string,
@@ -28,7 +29,11 @@ export const postLogin = async (
       );
     }
     return response.json().then((data) => {
-      localStorage.setItem("userToken", JSON.stringify(data.token));
+      if (data.token) {
+        localStorage.setItem("userToken", JSON.stringify(data.token));
+        // Cookies.set("access_token", data.token, { httpOnly: true });
+      }
+      // localStorage.setItem("userToken", JSON.stringify(data.token));
     });
   });
 };
