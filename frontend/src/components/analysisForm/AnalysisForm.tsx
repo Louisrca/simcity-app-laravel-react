@@ -1,5 +1,6 @@
 // import { handleSetAnalysData } from "../../hooks/handleSetAnalysData";
 import { HeaderForm } from "./components/HeaderForm";
+import { FormAnalyseOperation } from "./components/form/BTS/FormAnalyseOperation/FormAnalyseOperation";
 import s from "./AnalysisForm.module.css";
 export const AnalysisForm = () => {
   const URL = window.location.search;
@@ -12,6 +13,10 @@ export const AnalysisForm = () => {
       </div>
 
       <p> Analyse {getAnalyse && getAnalyse.toUpperCase()}</p>
+
+      <div>
+        <FormAnalyseOperation />
+      </div>
     </>
   );
 };
