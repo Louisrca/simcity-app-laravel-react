@@ -4,7 +4,7 @@ export const postLogin = async (
   email: string,
   password: string
 ): Promise<any> => {
-  await fetch("https://simcity-app-laravel-react-5ard.vercel.app/api/user/login", {
+  await fetch("http://127.0.0.1:8000/api/user/login", {
     method: "POST",
     mode: "cors",
     headers: new Headers({
@@ -29,9 +29,7 @@ export const postLogin = async (
     return response.json().then((data) => {
       if (data.token) {
         localStorage.setItem("userToken", JSON.stringify(data.token));
-        // Cookies.set("access_token", data.token, { httpOnly: true });
       }
-      // localStorage.setItem("userToken", JSON.stringify(data.token));
     });
   });
 };

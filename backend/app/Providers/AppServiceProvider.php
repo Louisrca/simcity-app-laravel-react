@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Providers;
-use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,11 +17,9 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(UrlGenerator $url): void
+    public function boot(): void
     {
         Schema::defaultStringLength(191);
-        if (env('APP_ENV') == 'production') {
-            $url->forceScheme('https');
-        }
+       
     }
 }
