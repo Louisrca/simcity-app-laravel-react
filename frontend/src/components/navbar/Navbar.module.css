@@ -25,9 +25,10 @@
   padding: 2% 4.5% 2% 4.5%;
 }
 
-.tabsList button,
-.selectIndicator {
-  margin: 0.25%;
+.button button,
+.buttonAnchor {
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 button:hover {
