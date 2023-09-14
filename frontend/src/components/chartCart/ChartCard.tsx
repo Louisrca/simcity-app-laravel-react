@@ -3,7 +3,6 @@ import { handleSetBTSChart } from "../../hooks/handleSetBTSChart";
 import s from "./ChartCard.module.css";
 export const ChartCard = () => {
   const { btsChartData, loading } = handleSetBTSChart();
-  console.log(btsChartData);
   return (
     <>
       <div className={s.chartCards}>

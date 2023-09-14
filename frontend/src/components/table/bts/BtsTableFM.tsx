@@ -10,11 +10,16 @@ import { WriteIcon } from "../../../common/icons/WriteIcon";
 import { useNavigate } from "react-router";
 import { Button } from "@mui/base";
 import { handleSetDataTable } from "../../../hooks/handleSetDataTable";
+import { SaveGridState } from "./utils/SaveGridState";
 export const BtsTableFM = () => {
   const navigate = useNavigate();
   const dataTable = handleSetDataTable();
-
   const { btsData, loading } = dataTable;
+
+  // SaveGridState hook
+  const gridState = SaveGridState();
+  // Destructuring gridState hook
+  const { saveState, storedState } = gridState;
 
   const rows: GridRowsProp = btsData;
   const columns: GridColDef[] = [
@@ -109,10 +114,25 @@ export const BtsTableFM = () => {
                 },
               }}
               initialState={{
-                pagination: { paginationModel: { pageSize: 5 } },
+                pagination: {
+                  paginationModel: storedState[0].storedPagination
+                    ? JSON.parse(storedState[0].storedPagination)
+                    : { pageSize: 5 },
+                },
+                sorting: {
+                  sortModel: storedState[0].storedSort
+                    ? JSON.parse(storedState[0].storedSort)
+                    : null,
+                },
+                filter: {
+                  filterModel: storedState[0].storedFilter
+                    ? JSON.parse(storedState[0].storedFilter)
+                    : null,
+                },
               }}
-              pageSizeOptions={[5, 10, 25, 50, 100]}
-              // onCellEditStop={(params: { id: any }) => setRowId(params.id)}
+              onFilterModelChange={saveState[0].gridFilter}
+              onSortModelChange={saveState[0].gridSort}
+              onPaginationModelChange={saveState[0].gridPagination}
             />
           </Box>
         </div>

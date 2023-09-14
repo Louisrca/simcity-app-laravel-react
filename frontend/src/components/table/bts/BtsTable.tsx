@@ -14,16 +14,24 @@ import { Button } from "@mui/base";
 import { UserActions } from "./utils/UserActions";
 import s from "./BtsTable.module.css";
 import { handleSetDataTable } from "../../../hooks/handleSetDataTable";
+import { SaveGridState } from "./utils/SaveGridState";
 
 export const BtsTable = () => {
-  const navigate = useNavigate();
-  const dataTable = handleSetDataTable();
-
   const [rowId, setRowId] = useState<any>();
+  // navigate variable
+  const navigate = useNavigate();
+  // handleSetDataTable hook
+  const dataTable = handleSetDataTable();
+  // Destructuring handleSetDataTable hook
   const { btsData, loading } = dataTable;
+  // SaveGridState hook
+  const gridState = SaveGridState();
+  // Destructuring gridState hook
+  const { saveState, storedState } = gridState;
 
+  // data's grid
   const rows: GridRowsProp = btsData;
-
+  // DataGrid columns
   const columns: GridColDef[] = [
     {
       field: "date_cession",
@@ -224,22 +232,6 @@ export const BtsTable = () => {
     },
   ];
 
-  const saveStateGridSortVisibility = (model: any) => {
-    const m = model;
-    localStorage.setItem("gridStateSort", JSON.stringify(m));
-  };
-  const saveStateGridFilterVisibility = (model: any) => {
-    const m = model;
-    localStorage.setItem("gridStateFIlter", JSON.stringify(m));
-  };
-  const saveStateGridPaginationVisibility = (model: any) => {
-    const m = model;
-    localStorage.setItem("gridStatePagination", JSON.stringify(m));
-  };
-  const storedSortModel = localStorage.getItem("gridStateSort");
-  const storedFilterModel = localStorage.getItem("gridStateFIlter");
-  const storedPaginationModel = localStorage.getItem("gridStatePagination");
-
   return (
     <>
       {loading ? (
@@ -279,28 +271,29 @@ export const BtsTable = () => {
                   disableRemoveAllButton: true,
                 },
               }}
+              sx={{ maxHeight: "450px" }}
               initialState={{
                 pagination: {
-                  paginationModel: storedPaginationModel
-                    ? JSON.parse(storedPaginationModel)
-                    : { pageSize: 5},
+                  paginationModel: storedState[0].storedPagination
+                    ? JSON.parse(storedState[0].storedPagination)
+                    : { pageSize: 5 },
                 },
                 sorting: {
-                  sortModel: storedSortModel
-                    ? JSON.parse(storedSortModel)
+                  sortModel: storedState[0].storedSort
+                    ? JSON.parse(storedState[0].storedSort)
                     : null,
                 },
                 filter: {
-                  filterModel: storedFilterModel
-                    ? JSON.parse(storedFilterModel)
+                  filterModel: storedState[0].storedFilter
+                    ? JSON.parse(storedState[0].storedFilter)
                     : null,
                 },
               }}
               pageSizeOptions={[5, 10, 25, 50, 100]}
               onCellEditStop={(params: { id: any }) => setRowId(params.id)}
-              onFilterModelChange={saveStateGridFilterVisibility}
-              onSortModelChange={saveStateGridSortVisibility}
-              onPaginationModelChange={saveStateGridPaginationVisibility}
+              onFilterModelChange={saveState[0].gridFilter}
+              onSortModelChange={saveState[0].gridSort}
+              onPaginationModelChange={saveState[0].gridPagination}
             />
           </Box>
         </div>
