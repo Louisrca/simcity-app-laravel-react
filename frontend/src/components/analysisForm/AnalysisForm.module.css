@@ -52,6 +52,14 @@
   margin: 0 0.7em 0 0.7em;
 }
 
+.formOperation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 2%;
+}
+
 .inputContent {
   width: 100%;
 }

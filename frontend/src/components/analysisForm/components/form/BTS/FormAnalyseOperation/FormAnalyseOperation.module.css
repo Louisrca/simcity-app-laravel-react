@@ -1,13 +1,75 @@
+.grid {
+  /* border: 1px solid black; */
+  width: 100%;
+}
+
+.formAuditSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2%;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.separator {
+  width: 75%;
+  height: 0.2em;
+  background-color: #a5a5a5;
+  border-radius: 8px;
+  margin-bottom: 2%;
+  display: none;
+}
+
+.title h3 {
+  /* color: #acd798; */
+  border-radius: 8px;
+  padding: 1%;
+}
+
 .formInputsSection {
   background-color: #ffffff;
-  border-radius: 8px;
-  padding: 8%;
   width: 100%;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  margin-bottom: 4%;
+  /* border: 1px solid black !important; */
 }
 
 .selectorAuditForm {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* grid-gap: 10px; */
+  grid-template-columns: 1fr 0.25fr;
+}
+
+.selectorAuditForm label,
+.selectorAuditForm select {
+  margin: 0.6%;
+}
+
+.selectorAuditForm label {
+  font-weight: 500;
+}
+
+.selectorAuditForm select {
+  width: auto;
+  border: none;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+}
+
+.selectorAuditForm select:hover {
+  border: 1px solid #747bff;
+  border-radius: 8px;
+}
+
+.selectorauditformselect select:focus,
+.selectorauditformselect select:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }

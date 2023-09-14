@@ -5,7 +5,8 @@ export const FormAudit = () => {
   return (
     <div className={s.formAuditSection}>
       <div className={s.title}>
-        <h4>Audit</h4>
+        <h3>Audit</h3>
+        <div className={s.separator}></div>
       </div>
       <div className={s.formInputsSection}>
         <div className={s.inputContent}>
@@ -17,7 +18,7 @@ export const FormAudit = () => {
             </select>
           </div>
           <div className={s.selectorAuditForm}>
-            <label htmlFor="">PARATONNERRE</label>
+            <label htmlFor="Paratonnerre">PARATONNERRE</label>
             <select name="paratonnerre" id={s.paratonnerreLabel}>
               <option value="OUI">OUI</option>
               <option value="NON">NON</option>

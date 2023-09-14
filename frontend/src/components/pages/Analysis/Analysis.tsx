@@ -3,17 +3,18 @@ import { AnalysisForm } from "../../analysisForm/AnalysisForm";
 import s from "./Analysis.module.css";
 
 export const Analysis = () => {
-  // const { meData, error } = useAuth();
-  // const user = meData?.user;
-
+  const URL = window.location.search;
+  const urlParams = new URLSearchParams(URL);
+  const getAnalyse = urlParams ? urlParams.get("analyse") : null;
   return (
     <div className={s.analisysView}>
       <div>
-        <h1>Analyse Site</h1>
-        {/* {user && (
-          <h4>Connecté en tant que {user.firstname + " " + user.lastname}</h4>
-        )}
-        {error && <p className={s.error}>{error}</p>} */}
+        <h2>
+          {" "}
+          Analyse Site{" "}
+          {getAnalyse &&
+            getAnalyse.charAt(0).toUpperCase() + getAnalyse.slice(1)}
+        </h2>
       </div>
 
       <div>

@@ -1,21 +1,17 @@
-// import { handleSetAnalysData } from "../../hooks/handleSetAnalysData";
 import { HeaderForm } from "./components/HeaderForm";
 import { FormAnalyseOperation } from "./components/form/BTS/FormAnalyseOperation/FormAnalyseOperation";
+import { FormAutreDoc } from "./components/form/BTS/FormAnalyseOperation/Forms/FormAutreDoc";
 import s from "./AnalysisForm.module.css";
 export const AnalysisForm = () => {
-  const URL = window.location.search;
-  const urlParams = new URLSearchParams(URL);
-  const getAnalyse = urlParams.get("analyse");
   return (
     <>
       <div className={s.header}>
         <HeaderForm />
       </div>
 
-      <p> Analyse {getAnalyse && getAnalyse.toUpperCase()}</p>
-
-      <div>
+      <div className={s.formOperation}>
         <FormAnalyseOperation />
+        <FormAutreDoc />
       </div>
     </>
   );
