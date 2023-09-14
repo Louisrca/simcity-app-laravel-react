@@ -1,14 +1,7 @@
-import { WidthFull } from "@mui/icons-material";
 import s from "../FormAnalyseOperation.module.css";
-import { InputLabel, Select, MenuItem, FormControl } from "@mui/material";
-import { SelectChangeEvent } from "@mui/material/Select";
 import { useState } from "react";
 
 export const FormAudit = () => {
-  const [age, setAge] = useState<string | undefined>();
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
-  };
   return (
     <div className={s.formAuditSection}>
       <div className={s.title}>
@@ -16,25 +9,29 @@ export const FormAudit = () => {
       </div>
       <div className={s.formInputsSection}>
         <div className={s.inputContent}>
-          <InputLabel
-            id="demo-simple-select-label"
-            sx={{
-              width: "auto",
-            }}
-          >
-            Age
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
+          <div className={s.selectorAuditForm}>
+            <label htmlFor="Type">TYPE</label>
+            <select name="type" id={s.typeLabel}>
+              <option value="Pylône">Pylône</option>
+              <option value="Pylône d'éclairage">Pylône d'éclairage</option>
+            </select>
+          </div>
+          <div className={s.selectorAuditForm}>
+            <label htmlFor="">PARATONNERRE</label>
+            <select name="paratonnerre" id={s.paratonnerreLabel}>
+              <option value="OUI">OUI</option>
+              <option value="NON">NON</option>
+              <option value="BLOQUANT">BLOQUANT</option>
+            </select>
+          </div>
+          <div className={s.selectorAuditForm}>
+            <label htmlFor="Etude Froudre">ETUDE FOUDRE</label>
+            <select name="etude_foudre" id={s.etudefroudreLabel}>
+              <option value="OUI">OUI</option>
+              <option value="NON">NON</option>
+              <option value="BLOQUANT">BLOQUANT</option>{" "}
+            </select>
+          </div>
         </div>
       </div>
     </div>

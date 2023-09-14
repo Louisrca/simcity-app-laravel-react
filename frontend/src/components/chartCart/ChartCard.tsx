@@ -2,7 +2,7 @@ import { ChartCardLayout } from "../layout/chartCard/ChartCardLayout";
 import { handleSetBTSChart } from "../../hooks/handleSetBTSChart";
 import s from "./ChartCard.module.css";
 export const ChartCard = () => {
-  const { btsChartData, loading } = handleSetBTSChart();
+  const { btsChartData } = handleSetBTSChart();
   return (
     <>
       <div className={s.chartCards}>
