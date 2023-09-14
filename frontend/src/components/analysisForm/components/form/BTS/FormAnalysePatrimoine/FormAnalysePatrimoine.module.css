@@ -44,43 +44,29 @@
 .selectorAuditForm {
   display: grid;
   grid-template-columns: 1fr 0.25fr;
-  align-items: center;
-}
-
-.asterisk {
-  color: red;
+ 
 }
 
 .selectorAuditForm label,
-.selectorAuditForm select,
-.selectorAuditForm input {
+.selectorAuditForm select {
   margin: 0.6%;
 }
 
 .selectorAuditForm label {
   font-weight: 500;
-  height: auto;
-  border: 2px solid #f4f4f4;
-  padding: 1%;
-  border-radius: 8px;
+  height: 1.5em;
+   
 }
 
-.selectorAuditForm select,
-.selectorAuditForm input {
-  width: 100%;
+.selectorAuditForm select {
+  width: auto;
   border: 1px solid transparent;
   background-color: #f4f4f4;
   border-radius: 8px;
   transition: 0.25s;
-  height: 3em;
 }
 
-.selectorAuditForm input {
-  width: 96%;
-}
-
-.selectorAuditForm select:hover,
-.selectorAuditForm input:hover {
+.selectorAuditForm select:hover {
   transition: 0.25s;
   border: 1px solid #747bff;
   border-radius: 8px;
@@ -89,10 +75,4 @@
 .selectorauditformselect select:focus,
 .selectorauditformselect select:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-.submitSection {
-  width: 100%;
-  display: flex;
-  justify-content: end;
 }

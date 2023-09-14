@@ -9,6 +9,10 @@
   padding: 2% 4.5% 2% 4.5%;
 }
 
+.anchorLogo {
+  cursor: pointer;
+}
+
 .img {
   width: 125px;
   height: 40%;

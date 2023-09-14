@@ -31,7 +31,12 @@ export const Navbar = () => {
     <div className="w-full">
       <div className={s.grid}>
         <div className={s.logo}>
-          <div>
+          <div
+            className={s.anchorLogo}
+            onClick={() => {
+              navigate("/dashboard");
+            }}
+          >
             <IconLayouts>
               <CellnexTelcomLogo classname={s.img} />
             </IconLayouts>

@@ -32,6 +32,7 @@ export const HeaderForm = () => {
                     WebkitTextFillColor: "rgb(33, 53, 71)",
                     // fontWeight: "bold",
                   },
+                  width: "100%",
                 }}
                 value={btsData && btsData.code_site}
               />
@@ -48,6 +49,7 @@ export const HeaderForm = () => {
                     WebkitTextFillColor: "rgb(33, 53, 71)",
                     // fontWeight: "bold",
                   },
+                  width: "100%",
                 }}
                 value={btsData && btsData.type_infra}
               />
@@ -64,6 +66,7 @@ export const HeaderForm = () => {
                     WebkitTextFillColor: "#1976d2",
                     // fontWeight: "bold",
                   },
+                  width: "100%",
                 }}
                 value={btsData && btsData.loyer_declare_fm}
               />
@@ -80,6 +83,7 @@ export const HeaderForm = () => {
                     WebkitTextFillColor: "rgb(33, 53, 71)",
                     // fontWeight: "bold",
                   },
+                  width: "100%",
                 }}
                 value={btsData && btsData.charge_prod_ope}
               />
@@ -96,6 +100,7 @@ export const HeaderForm = () => {
                     WebkitTextFillColor: "rgb(33, 53, 71)",
                     // fontWeight: "bold",
                   },
+                  width: "100%",
                 }}
                 value={btsData && btsData.charge_prod_sm}
               />
@@ -112,6 +117,7 @@ export const HeaderForm = () => {
                     WebkitTextFillColor: "rgb(33, 53, 71)",
                     // fontWeight: "bold",
                   },
+                  width: "100%",
                 }}
                 value={btsData && btsData.charge_prod_hse}
               />
@@ -120,7 +126,7 @@ export const HeaderForm = () => {
 
           <div className={s.bottomHeaderGrid}>
             <div className={s.headerLink}>
-              <div>
+              <div className={s.anchorButton}>
                 <button
                   onClick={() => {
                     navigate(
@@ -131,7 +137,7 @@ export const HeaderForm = () => {
                   Analyse Opération
                 </button>
               </div>
-              <div>
+              <div className={s.anchorButton}>
                 <button
                   onClick={() => {
                     navigate(
@@ -142,7 +148,7 @@ export const HeaderForm = () => {
                   Analyse SM
                 </button>
               </div>
-              <div>
+              <div className={s.anchorButton}>
                 <button
                   onClick={() => {
                     navigate(`/portails?id=${btsData.code_site}&analyse=hse`);
@@ -243,6 +249,7 @@ export const HeaderForm = () => {
                     WebkitTextFillColor: "orange",
                     // fontWeight: "bold",
                   },
+                  width: "100%",
                 }}
                 value={btsData && btsData.etat}
               />
@@ -259,6 +266,7 @@ export const HeaderForm = () => {
                     WebkitTextFillColor: "rgb(33, 53, 71)",
                     // fontWeight: "bold",
                   },
+                  width: "100%",
                 }}
                 value={btsData && btsData.arbitrage}
               />
