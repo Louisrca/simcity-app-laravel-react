@@ -6,6 +6,7 @@ type InputSelectorProps = {
   isBloquant: string;
   handleFunction: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   children: React.ReactNode;
+  isRequired: boolean;
 };
 
 export const InputSelector = ({ children, ...props }: InputSelectorProps) => {
@@ -14,7 +15,11 @@ export const InputSelector = ({ children, ...props }: InputSelectorProps) => {
       <label htmlFor={props.title} className={props.isBloquant}>
         {props.title} <span className={s.asterisk}>*</span>
       </label>
-      <select name={props.name} onChange={props.handleFunction}>
+      <select
+        name={props.name}
+        onChange={props.handleFunction}
+        required={props.isRequired}
+      >
         {children}
       </select>
     </div>

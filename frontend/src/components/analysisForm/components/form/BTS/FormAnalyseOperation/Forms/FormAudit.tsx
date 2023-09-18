@@ -3,13 +3,16 @@ import { useState } from "react";
 import { InputText } from "../../utils/inputText";
 import { InputSelector } from "../../utils/inputSelector";
 import { postFormOP } from "../../../../../../../services/forms/BTS/postFormOP";
+import { handleSetFormOPAudit } from "../../../../../../../hooks/handleSetFormOPAudit";
 export const FormAudit = () => {
-  const queryParameters = new URLSearchParams(window.location.search);
-  const code_site = queryParameters.get("id");
-  const date_cession = queryParameters.get("date_cession");
+  const URL = window.location.search;
+  const urlParams = new URLSearchParams(URL);
+  const codeSite = urlParams.get("id");
+  const dateCession = urlParams.get("date_cession");
+
   const [data, setData] = useState({
-    ["date_cession"]: date_cession,
-    ["code_site"]: code_site,
+    ["date_cession"]: dateCession,
+    ["code_site"]: codeSite,
   });
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -20,6 +23,10 @@ export const FormAudit = () => {
       console.error("Une erreur s'est produite :", error);
     }
   };
+
+  const { formOPData } = handleSetFormOPAudit(`${codeSite}`);
+
+  console.log(formOPData);
 
   return (
     <div className={s.formSection}>
@@ -36,6 +43,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -50,6 +58,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -65,6 +74,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -89,6 +99,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -105,6 +116,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -121,6 +133,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -137,6 +150,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -153,6 +167,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -169,6 +184,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -185,6 +201,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -201,6 +218,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -217,6 +235,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -233,6 +252,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -249,6 +269,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -265,6 +286,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -281,6 +303,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -297,6 +320,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -313,6 +337,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -329,6 +354,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -345,6 +371,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -361,6 +388,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner
@@ -377,6 +405,7 @@ export const FormAudit = () => {
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
+            isRequired={true}
           >
             <option value="" disabled selected>
               Séléctionner

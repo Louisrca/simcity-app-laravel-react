@@ -1,15 +1,14 @@
-export const postFormOP = async (data: object) => {
+export const getFormOP = async (codeSite: string) => {
   const token = localStorage.getItem("userToken");
   const tokenWithoutQuotes = token?.replace(/^"(.*)"$/, "$1");
   if (token !== null) {
-    return await fetch("http://127.0.0.1:8000/api/form/store-form-op", {
-      method: "POST",
+    return fetch("http://127.0.0.1:8000/api/form/show-by-id/" + codeSite, {
+      method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${tokenWithoutQuotes}`,
       },
-      body: JSON.stringify({ data }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -21,7 +20,5 @@ export const postFormOP = async (data: object) => {
       .catch((error) => {
         throw error;
       });
-  } else {
-    throw new Error("Token is null");
   }
 };
