@@ -217,7 +217,10 @@ export const BtsTable = () => {
           color="primary"
           onClick={() => {
             navigate(
-              "/portails?id=" + params.row.code_site + "&analyse=operation"
+              "/portails?id=" +
+                params.row.code_site +
+                "&analyse=operation&date_cession=" +
+                params.row.date_cession
             );
           }}
         >

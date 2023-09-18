@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CsrfTokenController;
 use App\Http\Controllers\Tables\BTSController;
 use App\Http\Controllers\Charts\BTSChartsController;
+use App\Http\Controllers\Forms\FormOPController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,6 @@ Route::middleware(['auth:sanctum'])->get("/table/store-by-id/{code_site}", [BTSC
 
 //Charts BTS
 Route::middleware(['auth:sanctum'])->get("/chart/chart-bts", [BTSChartsController::class, "index"]);
+
+//Formulaire BTS 
+Route::middleware(['auth:sanctum'])->post("/form/store-form-op", [FormOPController::class, "store"]);

@@ -1,14 +1,25 @@
 import s from "../../FormAnalyse.module.css";
-import { ChangeEvent } from "react";
-
 import { useState } from "react";
 import { InputText } from "../../utils/inputText";
 import { InputSelector } from "../../utils/inputSelector";
-
+import { postFormOP } from "../../../../../../../services/forms/BTS/postFormOP";
 export const FormAudit = () => {
-  const [data, setData] = useState([]);
+  const queryParameters = new URLSearchParams(window.location.search);
+  const code_site = queryParameters.get("id");
+  const date_cession = queryParameters.get("date_cession");
+  const [data, setData] = useState({
+    ["date_cession"]: date_cession,
+    ["code_site"]: code_site,
+  });
 
-  console.log(data);
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      await postFormOP(data);
+    } catch (error) {
+      console.error("Une erreur s'est produite :", error);
+    }
+  };
 
   return (
     <div className={s.formSection}>
@@ -16,7 +27,7 @@ export const FormAudit = () => {
         <h3>AUDIT</h3>
         <div className={s.separator}></div>
       </div>
-      <form action="" className={s.formInputsSection}>
+      <form action="" onSubmit={handleSubmit} className={s.formInputsSection}>
         <div className={s.inputContent}>
           <InputSelector
             title="TYPE"
