@@ -57,6 +57,11 @@
   margin: 0.6%;
 }
 
+.selectorForm .bloquantLabel {
+  font-weight: 700;
+  /* color: red; */
+}
+
 .selectorForm label {
   font-weight: 500;
   height: auto;
@@ -95,4 +100,5 @@
   width: 100%;
   display: flex;
   justify-content: end;
+  margin-top: 1%;
 }

@@ -28,7 +28,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className={s.header}>
       <div className={s.grid}>
         <div className={s.logo}>
           <div

@@ -13,7 +13,6 @@ export const HeaderForm = () => {
   const { btsDataById, error } = handleSetAnalysData(`${urlParams.get("id")}`);
 
   const btsData = btsDataById[0];
-  console.log(btsData);
 
   return (
     <>

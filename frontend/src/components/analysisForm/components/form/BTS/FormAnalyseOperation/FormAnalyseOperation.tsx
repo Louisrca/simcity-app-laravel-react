@@ -3,6 +3,8 @@ import { FormLayout } from "../../../../../layout/formLayout/FormLayout";
 import { FormAudit } from "./Forms/FormAudit";
 import { FormAutreDoc } from "./Forms/FormAutreDoc";
 import { FormDocTech } from "./Forms/FormDocTech";
+import { FormGeneral } from "./Forms/FormGeneral";
+import { FormEtudeNDC } from "./Forms/FormEtudeNDC";
 export const FormAnalyseOperation = () => {
   return (
     <div>
@@ -13,6 +15,8 @@ export const FormAnalyseOperation = () => {
             <FormAudit />
           </div>
           <div>
+            <FormGeneral />
+            <FormEtudeNDC />
             <FormDocTech />
             <FormAutreDoc />
           </div>

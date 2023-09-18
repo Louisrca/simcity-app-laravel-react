@@ -1,16 +1,16 @@
-import s from "../FormAnalyseOperation.module.css";
+import s from "../../FormAnalyse.module.css";
 import { useState } from "react";
 
 export const FormAutreDoc = () => {
   return (
-    <div className={s.formAuditSection}>
+    <div className={s.formSection}>
       <div className={s.title}>
         <h3>AUTRES DOCUMENTS</h3>
         <div className={s.separator}></div>
       </div>
-      <div className={s.formInputsSection}>
+      <form action="" className={s.formInputsSection}>
         <div className={s.inputContent}>
-          <div className={s.selectorAuditForm}>
+          <div className={s.selectorForm}>
             <label htmlFor="docRacEnergie">
               DOCUMENT RACCORDEMENT ENERGIE{" "}
               <span className={s.asterisk}>*</span>
@@ -21,7 +21,7 @@ export const FormAutreDoc = () => {
               <option value="N/A">N/A</option>
             </select>
           </div>
-          <div className={s.selectorAuditForm}>
+          <div className={s.selectorForm}>
             <label htmlFor="MESURE TERRE INFERIEUR A 150 Ohms">
               MESURE TERRE INFERIEUR A 150 Ohms{" "}
               <span className={s.asterisk}>*</span>
@@ -35,7 +35,7 @@ export const FormAutreDoc = () => {
               <option value="BLOQUANT">BLOQUANT</option>
             </select>
           </div>
-          <div className={s.selectorAuditForm}>
+          <div className={s.selectorForm}>
             <label
               htmlFor="AUTRE DOCUMENT JUGE INDISPENSABLE POUR L'HISTORIQUE DU SITE
               (général, technique, sécurité)"
@@ -51,12 +51,13 @@ export const FormAutreDoc = () => {
             </select>
           </div>
         </div>
-      </div>
-      <div className={s.submitSection}>
-        <div className={s.submitContent}>
-          <button>Valider</button>
+
+        <div className={s.submitSection}>
+          <div className={s.submitContent}>
+            <button>Valider</button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

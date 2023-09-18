@@ -1,16 +1,16 @@
-import s from "../FormAnalyseOperation.module.css";
+import s from "../../FormAnalyse.module.css";
 import { useState } from "react";
 
 export const FormDocTech = () => {
   return (
-    <div className={s.formAuditSection}>
+    <div className={s.formSection}>
       <div className={s.title}>
         <h3>DOCUMENTATIONS TECHNIQUES</h3>
         <div className={s.separator}></div>
       </div>
-      <div className={s.formInputsSection}>
+      <form action="" className={s.formInputsSection}>
         <div className={s.inputContent}>
-          <div className={s.selectorAuditForm}>
+          <div className={s.selectorForm}>
             <label htmlFor="docRacEnergie">
               DOCUMENT RACCORDEMENT ENERGIE{" "}
               <span className={s.asterisk}>*</span>
@@ -21,13 +21,13 @@ export const FormDocTech = () => {
               <option value="N/A">N/A</option>
             </select>
           </div>
-          <div className={s.selectorAuditForm}>
+          <div className={s.selectorForm}>
             <label htmlFor="MESURE TERRE INFERIEUR A 150 Ohms">
               MESURE TERRE INFERIEUR A 150 Ohms{" "}
               <span className={s.asterisk}>*</span>
             </label>
             <select name="mesure_terre" id={s.mesureTerreLabel}>
-              <option value="" disabled>
+              <option value="" disabled selected>
                 Séléctionner
               </option>
               <option value="OK">OK</option>
@@ -35,7 +35,7 @@ export const FormDocTech = () => {
               <option value="BLOQUANT">BLOQUANT</option>
             </select>
           </div>
-          <div className={s.selectorAuditForm}>
+          <div className={s.selectorForm}>
             <label
               htmlFor="AUTRE DOCUMENT JUGE INDISPENSABLE POUR L'HISTORIQUE DU SITE
               (général, technique, sécurité)"
@@ -51,12 +51,13 @@ export const FormDocTech = () => {
             </select>
           </div>
         </div>
-      </div>
-      <div className={s.submitSection}>
-        <div className={s.submitContent}>
-          <button>Valider</button>
+
+        <div className={s.submitSection}>
+          <div className={s.submitContent}>
+            <button>Valider</button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

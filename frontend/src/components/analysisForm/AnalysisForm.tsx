@@ -11,12 +11,12 @@ export const AnalysisForm = () => {
   return (
     <>
       <div className={s.titlePage}>
-        <h2>
+        <h1>
           {" "}
           Analyse Site{" "}
           {getAnalyse &&
             getAnalyse.charAt(0).toUpperCase() + getAnalyse.slice(1)}
-        </h2>
+        </h1>
       </div>
       <div className={s.header}>
         <HeaderForm />

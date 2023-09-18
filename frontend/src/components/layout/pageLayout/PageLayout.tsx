@@ -8,7 +8,6 @@ export const PageLayout = ({ children }: PropsWithChildren) => {
       <header className={s.headerNavbar}>
         <Navbar />
       </header>
-
       {children}
     </section>
   );

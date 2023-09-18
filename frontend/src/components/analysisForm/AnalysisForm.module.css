@@ -1,10 +1,10 @@
 .titlePage {
-  padding: 0 2% 0 2%;
+  /* padding: 2% 0 2% 0; */
 }
 .header {
   display: flex;
   align-items: start;
-  padding: 2%;
+  /* padding: 2%; */
 }
 .headerGrid {
   display: flex;
@@ -65,7 +65,7 @@
 
 .form {
   border-radius: 8px;
-  padding: 2%;
+  padding: 2% 0 2% 0;
 }
 
 .inputContent {
