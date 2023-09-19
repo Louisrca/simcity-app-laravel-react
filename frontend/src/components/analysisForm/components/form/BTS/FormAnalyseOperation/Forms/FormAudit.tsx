@@ -9,16 +9,14 @@ export const FormAudit = () => {
   const urlParams = new URLSearchParams(URL);
   const codeSite = urlParams.get("id");
   const dateCession = urlParams.get("date_cession");
-
-  const [data, setData] = useState({
-    ["date_cession"]: dateCession,
-    ["code_site"]: codeSite,
-  });
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setLoading(true);
     try {
       await postFormOP(data);
+      setLoading(false);
     } catch (error) {
       console.error("Une erreur s'est produite :", error);
     }
@@ -26,7 +24,13 @@ export const FormAudit = () => {
 
   const { formOPData } = handleSetFormOPAudit(`${codeSite}`);
 
-  console.log(formOPData);
+  const [data, setData] = useState({
+    ["date_cession"]: dateCession,
+    ["code_site"]: codeSite,
+    ["data"]: formOPData,
+  });
+
+  console.log(data);
 
   return (
     <div className={s.formSection}>
@@ -45,9 +49,16 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.typologie}>
+                {formOPData[0]?.typologie}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
+
             <option value="Pylône">Pylône</option>
             <option value="Pylône d'éclairage">Pylône d'éclairage</option>
           </InputSelector>
@@ -60,9 +71,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.paratonnerre}>
+                {formOPData[0]?.paratonnerre}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -76,9 +93,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.etude_foudre}>
+                {formOPData[0]?.etude_foudre}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -86,7 +109,9 @@ export const FormAudit = () => {
           <InputText
             title="SURFACE OCCUPEE (en m²)"
             type="number"
-            placeholder="Surface occupée"
+            placeholder={
+              formOPData[0] ? formOPData[0]?.surface_occupee : "Surface Occupée"
+            }
             name="surface_occupee"
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
@@ -101,9 +126,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.pylone_fabriquant}>
+                {formOPData[0]?.pylone_fabriquant}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -118,9 +149,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.pylone_gamme}>
+                {formOPData[0]?.pylone_gamme}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -135,9 +172,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.pylone_reference}>
+                {formOPData[0]?.pylone_reference}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -152,9 +195,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.section_pied_pylone}>
+                {formOPData[0]?.section_pied_pylone}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -169,9 +218,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.pylone_depointage}>
+                {formOPData[0]?.pylone_depointage}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -186,9 +241,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.pylone_voilure}>
+                {formOPData[0]?.pylone_voilure}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -203,9 +264,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.pylone_id_norme_calcul}>
+                {formOPData[0]?.pylone_id_norme_calcul}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -220,9 +287,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.pylone_entraxe}>
+                {formOPData[0]?.pylone_entraxe}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -237,9 +310,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.pylone_type_support}>
+                {formOPData[0]?.pylone_type_support}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -254,9 +333,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.pylone_sous_type}>
+                {formOPData[0]?.pylone_sous_type}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -271,9 +356,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.type_massif}>
+                {formOPData[0]?.type_massif}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -288,9 +379,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.type_support}>
+                {formOPData[0]?.type_support}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -305,9 +402,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.conception}>
+                {formOPData[0]?.conception}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -322,9 +425,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.systeme_interfacage}>
+                {formOPData[0]?.systeme_interfacage}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -339,9 +448,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.integration}>
+                {formOPData[0]?.integration}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -356,9 +471,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.si_integration_type}>
+                {formOPData[0]?.si_integration_type}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -373,9 +494,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.si_integration_fourniseurs_ip}>
+                {formOPData[0]?.si_integration_fourniseurs_ip}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -390,9 +517,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.si_integration_couleurs}>
+                {formOPData[0]?.si_integration_couleurs}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -407,9 +540,15 @@ export const FormAudit = () => {
             }}
             isRequired={true}
           >
-            <option value="" disabled selected>
-              Séléctionner
-            </option>
+            {formOPData[0] ? (
+              <option value={formOPData[0]?.type_antenne}>
+                {formOPData[0]?.type_antenne}
+              </option>
+            ) : (
+              <option value="" disabled selected>
+                Séléctionner
+              </option>
+            )}
             <option value="OUI">OUI</option>
             <option value="NON">NON</option>
             <option value="BLOQUANT">BLOQUANT</option>
@@ -419,7 +558,11 @@ export const FormAudit = () => {
             title="HAUTEUR SUPPORT (en mètre)"
             name="hauteur_support"
             type="number"
-            placeholder="Hauteur en mètre"
+            placeholder={
+              formOPData[0]
+                ? formOPData[0]?.hauteur_support
+                : "Hauteur en mètre"
+            }
             handleFunction={(e) => {
               setData({ ...data, [e.target.name]: e.target.value });
             }}
@@ -428,7 +571,15 @@ export const FormAudit = () => {
 
         <div className={s.submitSection}>
           <div className={s.submitContent}>
-            <button>Valider</button>
+            <button>
+              {loading ? (
+                <div className={s.loader}>
+                  {/* <div className={s.circle}></div> */}
+                </div>
+              ) : (
+                <div>Valider</div>
+              )}
+            </button>
           </div>
         </div>
       </form>
