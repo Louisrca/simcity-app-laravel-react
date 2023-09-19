@@ -27,7 +27,6 @@ export const FormAudit = () => {
   const [data, setData] = useState({
     ["date_cession"]: dateCession,
     ["code_site"]: codeSite,
-    ["data"]: formOPData,
   });
 
   console.log(data);

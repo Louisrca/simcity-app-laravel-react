@@ -22,15 +22,12 @@ class FormOPAuditController extends Controller{
 
             // UPDATE DATA
             if(Analyse_operation_audit::where("code_site", $request->data['code_site'])->exists()){
-                foreach($request->data as $key => $value){
-                    if($value == null){
-                        return response()->json(['message' => $key.' is required'], 200);
-                    }
-                    $Analyse_operation_audit::where('code_site', $request->code_site)
-                    ->update($request);
-                    return response()->json(['message' => 'Data updated successfully'], 200 );
-                }
+                $Analyse_operation_audit::where('code_site', $request->data['code_site'])
+                ->update($request->data);
+                return response()->json(['message' => 'Data updated successfully'], 200 );
             }
+
+
             // INSERT NEW DATA
             foreach($request->data as $key => $value){
                 if($value == null){
